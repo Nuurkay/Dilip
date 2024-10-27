@@ -1,0 +1,16 @@
+<odoo>
+    <record id="action_attendance_report" model="ir.actions.report">
+        <field name="name">scs_partner_attendance.attendance_summary_report</field>
+        <field name="model">partner.attendance</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >scs_partner_attendance.attendance_summary_report</field>
+        <field
+            name="report_file"
+        >scs_partner_attendance.attendance_summary_report</field>
+        <field name="print_report_name">Attendance Report</field>
+        <field name="binding_model_id" ref="" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

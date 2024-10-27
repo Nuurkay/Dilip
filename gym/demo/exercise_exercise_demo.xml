@@ -1,0 +1,43 @@
+<odoo noupdate="1">
+
+    <record id="gym.exercise_pullups" model="exercise.exercise">
+        <field name="benefits">Pull ups are very efficient because each and
+            every single pull up works out your biceps, triceps, forearms,
+            wrists, grip strength, lats, shoulders, and your core.
+        </field>
+        <field name="steps">1. Sit under the bar and grip it with your palms
+            facing out
+            2. Straighten up and lift about 50 percent of your body weight,
+            keeping your feet on the ground and your knees slightly bent. Keep
+            lifting until your chin is over the bar.
+            3. Slowly lower yourself back to starting position.
+            4. Repeat.
+        </field>
+        <field name="exercise_images_ids"
+               eval="[(6,0,[ref('image_attachment_1'),ref('image_attachment_2'),ref('image_attachment_3')])]"/>
+        <field name="exercise_type_ids"
+               eval="[(6,0,[ref('gym.exercise_shoulders')])]"/>
+        <field name="equipment_id" ref="gym.equipment_pullups"/>
+    </record>
+
+    <record id="gym.exercise_bench_press" model="exercise.exercise">
+        <field name="benefits">Maximum Overload the Chest Muscles. The bench
+            press is virtually unparalleled in its ability to target the chest
+            muscles with heavy loads..
+        </field>
+        <field name="steps">1. Setup. Lie on the flat bench with your eyes
+            under the bar.
+            2. Grab the bar. Put your pinky on the ring marks of your bar.
+            3. Unrack. Take a big breath and unrack the bar by straightening
+            your arms.
+            4. Lower the bar.
+            5. Press.
+        </field>
+        <field name="exercise_images_ids"
+               eval="[(6,0,[ref('image_attachment_4'),ref('image_attachment_5'),ref('image_attachment_6')])]"/>
+        <field name="exercise_type_ids"
+               eval="[(6,0,[ref('gym.exercise_chest')])]"/>
+        <field name="equipment_id" ref="gym.equipment_Bench_press"/>
+    </record>
+
+</odoo>

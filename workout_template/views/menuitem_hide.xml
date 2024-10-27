@@ -1,0 +1,10 @@
+<odoo>
+
+    <!--Project  -->
+    <menuitem name="Project"
+              id="project.menu_main_pm"
+              groups="-project.group_project_manager,-project.group_project_user,gym.group_menu_visible"
+              web_icon="project,static/description/icon.png"
+              sequence="50"/>
+
+</odoo>

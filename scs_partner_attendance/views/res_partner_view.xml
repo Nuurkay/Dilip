@@ -1,0 +1,86 @@
+<odoo>
+    <record id="action_partner_attendance" model="ir.actions.act_window">
+        <field name="name">Partner Attendance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">partner.attendance</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+    </record>
+    <!-- Inherited view of res_partner -->
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">view.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <field name="attendance_state" invisible="1" />
+                <button
+                    name="%(partner_attendance_action)d"
+                    class="oe_stat_button"
+                    type="action"
+                    context="{'default_partner_id': active_id}"
+                    attrs="{'invisible': [('attendance_state', '=', False)]}"
+                >
+                    <div
+                        role="img"
+                        class="fa fa-circle text-success"
+                        attrs="{'invisible': [('attendance_state', '=', 'checked_out')]}"
+                        aria-label="Available"
+                        title="Available"
+                    />
+                    <div
+                        role="img"
+                        class="fa fa-circle text-danger"
+                        attrs="{'invisible': [('attendance_state', '=', 'checked_in')]}"
+                        aria-label="Not available"
+                        title="Not available"
+                    />
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Attendance</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+    <record id="partner_kanban_view_new_inherit" model="ir.ui.view">
+        <field name="name">partner.kanban.view.new.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view" />
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <templates position="before">
+                <field name="attendance_state" />
+            </templates>
+            <xpath
+                expr="//div[hasclass('oe_kanban_global_click','o_kanban_record_has_image_fill','o_res_partner_kanban')]/div/div"
+                position="inside"
+            >
+                <div>
+                    <div
+                        class="float-right"
+                        t-if="record.attendance_state.raw_value == 'checked_in'"
+                    >
+                        <span
+                            class="fa fa-circle text-success"
+                            role="img"
+                            aria-label="Available"
+                            title="Available"
+                        />
+                    </div>
+                    <div
+                        class="float-right"
+                        t-if="record.attendance_state.raw_value == 'checked_out'"
+                    >
+                        <span
+                            class="fa fa-circle text-danger"
+                            role="img"
+                            aria-label="Not available"
+                            title="Not available"
+                        />
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

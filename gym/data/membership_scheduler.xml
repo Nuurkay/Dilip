@@ -1,0 +1,16 @@
+<odoo noupdate="1">
+
+    <!--Membership Scheduler  -->
+    <record id="update_membership_cron" model="ir.cron">
+        <field name="name">Update Membership</field>
+        <field name="model_id"
+               ref="membership.model_membership_membership_line"/>
+        <field name="state">code</field>
+        <field name="code">model.check_membership_validity()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="attendance_summary_wizard_form_view_inherit" model="ir.ui.view">
+        <field name="name">attendance.summary.wizard.form.view</field>
+        <field name="model">attendance.summary.wizard</field>
+        <field
+            name="inherit_id"
+            ref="scs_partner_attendance.attendance_summary_wizard_form_view"
+        />
+        <field name="arch" type="xml">
+            <field name="partner_ids" position="attributes">
+                <attribute name="domain">[('is_member', '=', True)]</attribute>
+                <attribute name="string">Members</attribute>
+            </field>
+        </field>
+    </record>
+    <menuitem
+        id="menu_member_attendance_report"
+        name="Member Attendance Report"
+        parent="gym.menu_report"
+        sequence="2"
+        action="scs_partner_attendance.action_attendance_summary_wizard"
+        groups="gym.group_gym_manager,gym.group_gym_operator"
+    />
+</odoo>

@@ -1,0 +1,50 @@
+<odoo>
+    <!-- attendance.summary.wizard Form View -->
+    <record id="employee_attendance_summary_wizard_form_view" model="ir.ui.view">
+        <field name="name">attendance.summary.wizard.form.view</field>
+        <field name="model">employee.attendance.summary.wizard</field>
+        <field name="arch" type="xml">
+            <form string=" Attendances">
+                <group col="4">
+                    <field name="from_date" />
+                    <field name="summary_type" />
+                    <field
+                        name="employee_ids"
+                        widget="many2many_tags"
+                        required="1"
+                        options="{'no_create':True}"
+                    />
+                </group>
+                <footer>
+                    <button
+                        name="print_report"
+                        string="Print"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record
+        id="action_employee_attendance_summary_wizard"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Trainer Attendance Summary</field>
+        <field name="res_model">employee.attendance.summary.wizard</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="employee_attendance_summary_wizard_form_view" />
+        <field name="target">new</field>
+    </record>
+    <!-- Menu Attendance report -->
+    <menuitem
+        id="menu_attendance_report"
+        name="Trainer Attendance Report"
+        parent="gym.menu_report"
+        sequence="2"
+        action="action_employee_attendance_summary_wizard"
+        groups="gym.group_gym_operator,gym.group_gym_manager"
+    />
+</odoo>

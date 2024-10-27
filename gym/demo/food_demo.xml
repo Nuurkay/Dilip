@@ -1,0 +1,206 @@
+<odoo noupdate="1">
+
+    <record id="food_product_1" model="product.template">
+        <field name="name">Egg</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/egg.jpeg"/>
+    </record>
+
+    <record id="food_product_2" model="product.template">
+        <field name="name">Milk(Add 2 tsp skimmed milk powder )</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/milk.jpeg"/>
+    </record>
+
+    <record id="food_product_3" model="product.template">
+        <field name="name">Salad</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/salad.jpeg"/>
+    </record>
+
+    <record id="food_product_4" model="product.template">
+        <field name="name">Roti</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/roti.jpeg"/>
+    </record>
+
+    <record id="food_product_5" model="product.template">
+        <field name="name">Sabji</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/sabji.jpeg"/>
+    </record>
+
+    <record id="food_product_6" model="product.template">
+        <field name="name">Oats</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/oats.jpeg"/>
+    </record>
+
+    <record id="food_product_7" model="product.template">
+        <field name="name">Vegetable stuffed paratha</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/paratha.jpeg"/>
+    </record>
+
+    <record id="food_product_8" model="product.template">
+        <field name="name">Fruits</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/fruits.jpeg"/>
+    </record>
+
+    <record id="food_product_9" model="product.template">
+        <field name="name">Curd</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/curd.jpeg"/>
+    </record>
+
+    <record id="food_product_10" model="product.template">
+        <field name="name">Dal</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/dal.jpeg"/>
+    </record>
+
+    <record id="food_product_11" model="product.template">
+        <field name="name">Banana</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/banana.jpeg"/>
+    </record>
+
+    <record id="food_product_12" model="product.template">
+        <field name="name">Toasted bread</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/bread.jpeg"/>
+    </record>
+
+    <record id="food_product_13" model="product.template">
+        <field name="name">Dry Fruit chikki</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/chikki.jpeg"/>
+    </record>
+
+    <record id="food_product_14" model="product.template">
+        <field name="name">Roasted Soyabean</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/soya.jpeg"/>
+    </record>
+
+    <record id="food_product_15" model="product.template">
+        <field name="name">Lassi</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/lussi.jpeg"/>
+    </record>
+
+    <record id="food_product_16" model="product.template">
+        <field name="name">chicken soup</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/shup.jpeg"/>
+    </record>
+
+    <record id="food_product_17" model="product.template">
+        <field name="name">Tea / Coffee</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/tea.jpeg"/>
+    </record>
+
+    <record id="food_product_18" model="product.template">
+        <field name="name">Cookies</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/cookies.jpeg"/>
+    </record>
+
+    <record id="food_product_19" model="product.template">
+        <field name="name">Lukewarm Water</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/wotar.jpeg"/>
+    </record>
+
+    <record id="food_product_20" model="product.template">
+        <field name="name">Brown Rice</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/browen_rice.jpeg"/>
+    </record>
+
+    <record id="food_product_21" model="product.template">
+        <field name="name">Butter Milk</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/butter_milk.jpeg"/>
+    </record>
+
+    <record id="food_product_22" model="product.template">
+        <field name="name">Fish</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/fish.jpeg"/>
+    </record>
+
+    <record id="food_product_23" model="product.template">
+        <field name="name">Melon</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/melon.jpeg"/>
+    </record>
+
+    <record id="food_product_24" model="product.template">
+        <field name="name">lean roast beef</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/lean_roast_beef.jpeg"/>
+    </record>
+
+    <record id="food_product_25" model="product.template">
+        <field name="name">Swiss cheese</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/chese.jpeg"/>
+    </record>
+
+    <record id="food_product_26" model="product.template">
+        <field name="name">grain bread</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/grain_bread.jpeg"/>
+    </record>
+
+    <record id="food_product_27" model="product.template">
+        <field name="name">Broccoli</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/brocali.jpeg"/>
+    </record>
+
+    <record id="food_product_28" model="product.template">
+        <field name="name">Peanuts</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/penuats.jpeg"/>
+    </record>
+
+    <record id="food_product_29" model="product.template">
+        <field name="name">Poha</field>
+        <field name="is_food">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/poha.jpeg"/>
+    </record>
+
+</odoo>

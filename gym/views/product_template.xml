@@ -1,0 +1,272 @@
+<odoo>
+
+    <!--parent menu -->
+    <menuitem id="menu_gym"
+              web_icon="gym,static/description/icon.png"
+              name="Gym Management"/>
+
+    <!--Configuration menu -->
+    <menuitem id="menu_Configuration" name="Configuration" parent="menu_gym"
+              groups='gym.group_gym_operator'/>
+
+    <!-- Inherited view of product -->
+    <record id="view_equipments_form_view" model="ir.ui.view">
+        <field name="name">view.equipments.form.view</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="sts_work" string="Working" type="object"
+                            states="maintenance,repair"/>
+                    <button name="sts_maintan" string="Maintenance"
+                            type="object" states="working"/>
+                    <button name="sts_rpr" string="Repair" type="object"
+                            states="working,maintenance"/>
+                    <button name="sts_out" string="Out Of Service"
+                            type="object" states="working,maintenance,repair"/>
+                    <field name="state" widget="statusbar" clickable="0"
+                           statusbar_visible="working,repair"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button"
+                                icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                   options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        </button>
+                    </div>
+                    <field name="image_1920" widget="image"
+                           class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name"
+                               string="Equipment Name"/>
+                        <h1>
+                            <field name="name" placeholder="Equipment Name"/>
+                        </h1>
+                        <div>
+                            <field name="is_equipment" invisible="1"/>
+                            <label for="is_equipment" invisible="1"/>
+                        </div>
+                    </div>
+                    <notebook>
+                        <page name="general_information" string="General Information">
+                            <group>
+                                <group name="group_standard_price">
+                                    <label for="standard_price"
+                                           groups="base.group_user"/>
+                                    <div name="standard_price_uom"
+                                         groups="base.group_user">
+                                        <field name="standard_price"
+                                               widget="monetary"
+                                               options="{'currency_field': 'currency_id'}"
+                                               class="oe_inline"/>
+                                    </div>
+                                    <label for="exercise_ids"/>
+                                    <div>
+                                        <field name="exercise_ids"
+                                               widget="many2many_tags"/>
+                                    </div>
+                                    <label for="company"/>
+                                    <div>
+                                        <field name="company"/>
+                                    </div>
+                                    <label for="purchase_date"/>
+                                    <div>
+                                        <field name="purchase_date"/>
+                                    </div>
+                                    <field name="currency_id" invisible="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <group name="description">
+                                <separator string="Description for Equipment"
+                                           colspan="4"/>
+                                <field name="note" colspan="4" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+   
+
+    <!-- Tree view of equipments-->
+    <record id="view_equipments_tree_view" model="ir.ui.view">
+        <field name="name">view.equipments.tree.view</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="is_equipment"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view of equipments-->
+    <record id="view_equipments_search" model="ir.ui.view">
+        <field name="name">view.equipments.search</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="is_equipment"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Form view of exercise_type -->
+    <record id="view_exercise_form" model="ir.ui.view">
+        <field name="name">view.exercise.form</field>
+        <field name="model">exercise.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of exercise_type -->
+    <record id="view_exercise_tree" model="ir.ui.view">
+        <field name="name">view.exercise.tree</field>
+        <field name="model">exercise.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action of exercise_type -->
+    <record id="action_exercise" model="ir.actions.act_window">
+        <field name="name">Body Parts</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">exercise.type</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click here to add new body part.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu of the exercise_type -->
+    <menuitem id="menu_exercise" action="action_exercise"
+              parent="gym.menu_Configuration" sequence="2"/>
+
+    <record id="view_service_form_inherit" model="ir.ui.view">
+        <field name="name">view.service.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id"
+               ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="placeholder">Service Name</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_temp_form_inherit" model="ir.ui.view">
+        <field name="name">view.product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']/div[2]" position="after">
+                <div>
+                    <field name="is_membership"/>
+                    <label for="is_membership"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Action of service -->
+    <record id="action_service" model="ir.actions.act_window">
+        <field name="name">Service Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_service','=',True)]</field>
+        <field name="context">{'service_default':True}</field>
+        <field name="help" type="html">
+            <p>
+                Click here to add new service.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu of the service -->
+    <menuitem id="menu_service" action="action_service"
+              parent="gym.menu_Configuration"/>
+
+    <!-- equipments action -->
+    <record id="action_gym" model="ir.actions.act_window">
+        <field name="name">Equipments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_equipment','=',True)]</field>
+        <field name="context">
+            {"equipments_default":True,'search_default_fill_equipment':1}
+        </field>
+        <field name="help" type="html">
+            <p>
+                Click here to add new equipment.
+            </p>
+        </field>
+    </record>
+
+    <!-- Binding the action of Equipment kanban -->
+    <record id="view_equipment_kanban" model="ir.actions.act_window.view">
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="product.product_template_kanban_view"/>
+        <field name="act_window_id" ref="action_gym"/>
+    </record>
+
+    <record id="view_equipment_tree" model="ir.actions.act_window.view">
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_equipments_tree_view"/>
+        <field name="act_window_id" ref="action_gym"/>
+    </record>
+
+    <record id="view_equipment_form" model="ir.actions.act_window.view">
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_equipments_form_view"/>
+        <field name="act_window_id" ref="action_gym"/>
+    </record>
+
+    <!-- Sub Menu as Equipments -->
+    <menuitem id="menu_gym_equipment" action="action_gym"
+              parent="gym.menu_Configuration" sequence="1"/>
+
+    <record id="product.report_product_template_label" model="ir.actions.report">
+            <field name="name">Product Label (PDF)</field>
+            <field name="model">product.template</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product.report_producttemplatelabel</field>
+            <field name="report_file">product.report_producttemplatelabel</field>
+            <field name="print_report_name">'Products Labels - %s' % (object.name)</field>
+            <field name="binding_model_id" ref=""/>
+            <field name="binding_type">report</field>
+    </record>
+
+      <record id="report_product_template_barcode" model="ir.actions.report">
+            <field name="name">Product Barcode (PDF)</field>
+            <field name="model">product.template</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product.report_producttemplatebarcode</field>
+            <field name="report_file">product.report_producttemplatebarcode</field>
+            <field name="print_report_name">'Products barcode - %s' % (object.name)</field>
+            <field name="binding_model_id" ref=""/>
+            <field name="binding_type">report</field>
+        </record>
+</odoo>

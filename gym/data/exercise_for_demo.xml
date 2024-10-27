@@ -1,0 +1,75 @@
+<odoo noupdate="1">
+
+    <record id="exercise_chest" model="exercise.type">
+        <field name="name">Chest</field>
+    </record>
+
+    <record id="exercise_shoulders" model="exercise.type">
+        <field name="name">Shoulders</field>
+    </record>
+
+    <record id="exercise_triceps" model="exercise.type">
+        <field name="name">Triceps</field>
+    </record>
+
+    <record id="exercise_biceps" model="exercise.type">
+        <field name="name">Biceps</field>
+    </record>
+
+    <record id="exercise_abdominals" model="exercise.type">
+        <field name="name">Abdominals</field>
+    </record>
+
+    <record id="exercise_glutes" model="exercise.type">
+        <field name="name">Glutes</field>
+    </record>
+
+    <record id="exercise_abs" model="exercise.type">
+        <field name="name">Abs</field>
+    </record>
+
+    <record id="exercise_lowerback" model="exercise.type">
+        <field name="name">Lowerback</field>
+    </record>
+
+    <record id="exercise_fullbody" model="exercise.type">
+        <field name="name">Full Body</field>
+    </record>
+
+    <record id="exercise_forarms" model="exercise.type">
+        <field name="name">Forearms</field>
+    </record>
+
+    <record id="exercise_traps" model="exercise.type">
+        <field name="name">Traps</field>
+    </record>
+
+    <record id="exercise_calves" model="exercise.type">
+        <field name="name">Calves</field>
+    </record>
+
+    <record id="exercise_quads" model="exercise.type">
+        <field name="name">Quads</field>
+    </record>
+
+    <record id="exercise_neck" model="exercise.type">
+        <field name="name">Neck</field>
+    </record>
+
+    <record id="exercise_middle_back" model="exercise.type">
+        <field name="name">Middle Back</field>
+    </record>
+
+    <record id="exercise_lats" model="exercise.type">
+        <field name="name">Lats</field>
+    </record>
+
+    <record id="exercise_legs" model="exercise.type">
+        <field name="name">Legs</field>
+    </record>
+
+    <record id="exercise_back" model="exercise.type">
+        <field name="name">Back</field>
+    </record>
+
+</odoo>

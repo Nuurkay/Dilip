@@ -1,0 +1,7 @@
+<templates>
+    <t t-name="FieldOdooUrl" t-extend="FieldEmail">
+        <t t-jquery="span" t-operation="inner">
+            <a target="_blank" class="o_form_uri" href="#"></a>
+        </t>
+    </t>
+</templates>

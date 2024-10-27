@@ -1,0 +1,23 @@
+<odoo>
+    <!-- Inherited view of hr_employee -->
+    <record id="view_trainer_form" model="ir.ui.view">
+        <field name="name">view.trainer.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="gym.view_trainer_form_inherit"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                 <button name="get_trainer_session"
+                    type="object" class="oe_stat_button"
+                    options="{&quot;terminology&quot;: &quot;archive&quot;}"             
+                    icon="fa-th-list" context="{'default_trainer_id':active_id}"
+                    >
+                    <field name="total_session" string="Session"
+                        widget="statinfo"/>
+                 </button>
+            </div>
+            <xpath expr="//button[@id='hr_presence_button']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

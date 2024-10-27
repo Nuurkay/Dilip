@@ -1,0 +1,110 @@
+<odoo noupdate="1">
+
+    <!-- Member -->
+    <record id="member_demo" model="res.partner">
+        <field name="name">Member</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="email">member@gym.example.com</field>
+        <field name="company_name">YourCompany</field>
+    </record>
+
+    <record id="member_user_demo" model="res.users">
+        <field name="partner_id" ref="gym.member_demo"/>
+        <field name="login">member44@gym.example.com</field>
+        <field name="password">a</field>
+        <field name="is_member" eval="1"/>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="groups_id" eval="[(6,0,[ref('gym.group_gym_member')])]"/>
+        <field name="image_1920" type="base64" file="gym/static/image/member.jpeg"/>
+    </record>
+
+    <record id="member_demo2" model="res.partner">
+        <field name="name">Troy</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="is_member" eval="1"/>
+        <field name="mobile">54685154854</field>
+        <field name="email">member12@gym.example.com</field>
+        <field name="image_1920" type="base64" file="gym/static/image/mem-1.jpeg"/>
+    </record>
+
+    <record id="member_demo4" model="res.partner">
+        <field name="name">Lucy</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="is_member" eval="1"/>
+        <field name="mobile">578656882132</field>
+        <field name="email">member132@gym.example.com</field>
+        <field name="image_1920" type="base64" file="gym/static/image/mem-2.jpeg"/>
+    </record>
+
+    <record id="member_demo3" model="res.partner">
+        <field name="name">Steven</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="is_member" eval="1"/>
+        <field name="mobile">2312365135</field>
+        <field name="email">member133@gym.example.com</field>
+        <field name="image_1920" type="base64" file="gym/static/image/mem-3.jpeg"/>
+    </record>
+
+    <!--Measurement history  -->
+    <record id="measure_11" model="body.measurement">
+        <field name="partner_id" ref='gym.member_demo2'/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+        <field name="neck">7.05</field>
+        <field name="chest">36.00</field>
+        <field name="biceps">12.00</field>
+        <field name="waist">34.00</field>
+        <field name="hips">38.00</field>
+        <field name="thigh">16.00</field>
+        <field name="calf">8.00</field>
+        <field name="weight">60.00</field>
+        <field name="height">5.03</field>
+    </record>
+
+    <record id="measure_12" model="body.measurement">
+        <field name="partner_id" ref='gym.member_demo2'/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1)).strftime('%Y-%m-%d')"/>
+        <field name="neck">6.05</field>
+        <field name="chest">35.00</field>
+        <field name="biceps">10.00</field>
+        <field name="waist">32.00</field>
+        <field name="hips">36.00</field>
+        <field name="thigh">13.00</field>
+        <field name="calf">6.00</field>
+        <field name="weight">55.00</field>
+        <field name="height">5.03</field>
+    </record>
+
+    <record id="trainer_employee_demo1" model="hr.employee">
+        <field name="name">John</field>
+        <field name="work_email">membernn@gym.example.com</field>
+        <field name="is_trainer" eval="1"/>
+        <field name="image_1920" type="base64" file="gym/static/image/emp-1.jpeg"/>
+    </record>
+
+    <record id="trainer_employee_demo2" model="hr.employee">
+        <field name="name">Ron</field>
+        <field name="work_email">member23132679@gym.example.com</field>
+        <field name="is_trainer" eval="1"/>
+        <field name="image_1920" type="base64"
+               file="gym/static/image/trainer.jpeg"/>
+    </record>
+
+    <!-- Operator -->
+
+    <record id="operator_employee_demo1" model="hr.employee">
+        <field name="name">Victoria</field>
+        <field name="work_email">member12167@gym.example.com</field>
+        <field name="image_1920" type="base64" file="gym/static/image/ope-1.jpeg"/>
+    </record>
+
+    <!-- Manager -->
+
+    <record id="manager_employee_demo1" model="hr.employee">
+        <field name="name">Victoria</field>
+        <field name="work_email">member1211@gym.example.com</field>
+        <field name="image_1920" type="base64" file="gym/static/image/man.jpeg"/>
+    </record>
+
+</odoo>

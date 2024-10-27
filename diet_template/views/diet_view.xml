@@ -1,0 +1,276 @@
+<odoo>
+
+    <!-- Form view of Diet Plan lines -->
+    <record id="view_diet_plan_lines_form" model="ir.ui.view">
+        <field name="name">view.diet.plan.lines.form</field>
+        <field name="model">diet.plan.lines</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="interval"/>
+                    </group>
+                    <group string="Food Items">
+                        <field name="food_item_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="food_name_id"
+                                       domain="[('is_food','=',True)]"
+                                       context="{'form_view_ref':'diet_template.view_food_item_product_form','default_is_food':True}"/>
+                                <field name="quantity"/>
+                                <field name="measure_unit_id"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="food_name_id"/>
+                                    <field name="quantity"/>
+                                    <field name="measure_unit_id"/>
+                                </group>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of Diet Plan lines -->
+    <record id="view_diet_plan_lines_tree" model="ir.ui.view">
+        <field name="name">view.diet.plan.lines.tree</field>
+        <field name="model">diet.plan.lines</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="interval"/>
+                <field name="food_item_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action of Diet Plan lines -->
+    <record id="action_diet_plan_lines" model="ir.actions.act_window">
+        <field name="name">Diet Plan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">diet.plan.lines</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Form view of Diet Plan  -->
+    <record id="view_diet_plan_form" model="ir.ui.view">
+        <field name="name">view.diet.plan.form</field>
+        <field name="model">diet.plan</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="name"
+                                   Placeholder="e.g Diet Plan For Kids"/>
+                        </h1>
+                        <separator string="Diet Plan" colspan="4"/>
+                        <field name="diet_plans_ids" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of Diet Plan  -->
+    <record id="view_diet_plan_tree" model="ir.ui.view">
+        <field name="name">view.diet.plan.tree</field>
+        <field name="model">diet.plan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="diet_plans_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action of Diet Plan lines -->
+    <record id="action_diet_plan" model="ir.actions.act_window">
+        <field name="name">Diet Plans</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">diet.plan</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Form view of food item-->
+    <record id="view_item_form" model="ir.ui.view">
+        <field name="name">view.item.form</field>
+        <field name="model">food.item</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="food_name_id"
+                                   domain="[('is_food','=',True)]"
+                                   required="1"/>
+                            <field name="quantity"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of food item -->
+    <record id="view_item_tree" model="ir.ui.view">
+        <field name="name">view.item.tree</field>
+        <field name="model">food.item</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="food_name_id"/>
+                <field name="quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action of food item -->
+    <record id="action_food_item" model="ir.actions.act_window">
+        <field name="name">Food Items</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">food.item</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_food','=',True)]</field>
+        <field name="context">{"food_default":True}</field>
+    </record>
+
+    <!-- Form view of Food Product-->
+    <record id="view_food_item_product_form" model="ir.ui.view">
+        <field name="name">view.food.item.product.form</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image_1920"
+                           widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label class="oe_edit_only"
+                               for="name" string="Food Name"/>
+                        <h1>
+                            <field name="name" placeholder="Food Name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Nutrition Information">
+                            <table border="1" style="width:100%; height:100%">
+                                <tr>
+                                    <td class="text-align:center;">
+                                        <style>h4 {text-align: center;}</style>
+                                        <h4>
+                                            <separator
+                                                    string="Nutrition Information"
+                                                    colspan="4"/>
+                                        </h4>
+                                    </td>
+                                </tr>
+                            </table>
+                            <group>
+                                <group>
+                                    <field name="unit_id" widget="selection"
+                                           />
+                                    <field name="calorie"/>
+                                    <field name="protein"/>
+                                    <field name="carbohydrates"/>
+                                </group>
+                                <group>
+                                    <field name="fat"/>
+                                    <field name="fibres"/>
+                                    <field name="sodium"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="General Information">
+                            <group col="4">
+                                <field name="type"/>
+                                <field name="list_price"/>
+                                <field name="categ_id"/>
+                                <field name="taxes_id"
+                                       widget="many2many_tags"/>
+                                <field name="default_code"/>
+                                <field name="standard_price"/>
+                            </group>
+                            <group string="Internal Notes">
+                                <field name="description" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View of Food Product -->
+    <record id="product_template_food_tree_view" model="ir.ui.view">
+        <field name="name">product.template.food.product.tree</field>
+        <field name="model">product.template</field>
+        <field name="priority">60</field>
+        <field name="arch" type="xml">
+            <tree string="Product">
+                <field name="name"/>
+                <field name="unit_id" widget="selection" required="1"/>
+                <field name="calorie"/>
+                <field name="protein"/>
+                <field name="carbohydrates"/>
+                <field name="fat"/>
+                <field name="fibres"/>
+                <field name="sodium"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action of Food Product -->
+    <record id="action_food_food_item" model="ir.actions.act_window">
+        <field name="name">Food Items</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="binding_view_types">form</field>
+        <field name="domain">[('is_food','=',True)]</field>
+        <field name="context">{'default_is_food':True}</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new Food Item.
+            </p>
+        </field>
+    </record>
+
+    <!-- Binding the action of Food to Kanban -->
+    <record id="view_food_product_kanban_bind"
+            model="ir.actions.act_window.view">
+        <field name="view_mode">kanban</field>
+        <field name="sequence">0</field>
+        <field name="view_id" ref="product.product_template_kanban_view"/>
+        <field name="act_window_id" ref="action_food_food_item"/>
+    </record>
+
+    <!-- Binding the action of Food to Tree -->
+    <record id="view_food_product_tree_bind"
+            model="ir.actions.act_window.view">
+        <field name="view_mode">tree</field>
+        <field name="sequence">1</field>
+        <field name="view_id" ref="product_template_food_tree_view"/>
+        <field name="act_window_id" ref="action_food_food_item"/>
+    </record>
+
+    <!-- Binding the action of Food to Form -->
+    <record id="view_food_product_form_bind"
+            model="ir.actions.act_window.view">
+        <field name="view_mode">form</field>
+        <field name="sequence">2</field>
+        <field name="view_id" ref="view_food_item_product_form"/>
+        <field name="act_window_id" ref="action_food_food_item"/>
+    </record>
+
+    <!--Parent Menu  -->
+    <menuitem id="menu_diet_main" name="Diet"
+              parent="gym.menu_gym" sequence="4"/>
+
+    <menuitem id="menu_food_item" action="action_food_food_item"
+              parent="menu_diet_main" sequence="2"
+              groups='gym.group_gym_operator'/>
+
+</odoo>

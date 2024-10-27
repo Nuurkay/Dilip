@@ -1,0 +1,74 @@
+<odoo>
+    <template id="attendance_summary_report">
+        <t t-call="web.html_container">
+            <t t-value="get_data" t-set="values" />
+            <t
+                t-value="values.get('partner_attendance_ids').keys()"
+                t-set="get_values"
+            />
+            <t t-foreach="get_values" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center">
+                            <h2>Attendance Report</h2>
+                            <br />
+                            <strong>From :</strong>
+                            <span t-esc="data['data_form']['from_date']" />
+                            <strong>To :</strong>
+                            <span t-esc="values.get('to_date')" />
+                            <br />
+                            <strong>Name :</strong>
+                            <span t-esc="o.name" />
+                        </div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Check In</th>
+                                    <th>Check Out</th>
+                                    <th class="text-right">Worked Hours</th>
+                                </tr>
+                            </thead>
+                            <t t-set="total_worked_hours" t-value="0.0" />
+                            <tr
+                                t-foreach="values.get('partner_attendance_ids').get(o)"
+                                t-as="data"
+                            >
+                                <t
+                                    t-set="total_worked_hours"
+                                    t-value="total_worked_hours + data.worked_hours"
+                                />
+                                <td>
+                                    <span t-esc="get_days_name(data.check_in)" />
+                                </td>
+                                <td>
+                                    <span t-esc="get_datatime(data.check_in)" />
+                                </td>
+                                <td>
+                                    <span t-esc="get_datatime(data.check_out)" />
+                                </td>
+                                <td class="text-right">
+                                    <t
+                                        t-esc="'%s:%02.0f' % tuple(int(round(x)) for x in divmod(data.worked_hours*60,60))"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right" colspan="3">
+                                    <strong>Total Worked Hours:</strong>
+                                </td>
+                                <td class="text-right">
+                                    <strong>
+                                        <strong
+                                            t-esc="'%s:%02.0f' % tuple(int(round(x)) for x in divmod(total_worked_hours*60,60))"
+                                        />
+                                    </strong>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

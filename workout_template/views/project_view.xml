@@ -1,0 +1,194 @@
+<odoo>
+    <menuitem id="menu_workout_main" name="Workout" parent="gym.menu_gym" sequence="3"/>
+    <record id="view_project_form_inherit" model="ir.ui.view">
+        <field name="name">view.project.form.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="placeholder">Plan Name</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Member</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Trainer</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_project_tree_inherit" model="ir.ui.view">
+        <field name="name">view.project.tree.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Member</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Trainer</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_project_search_inherit" model="ir.ui.view">
+        <field name="name">view.project.search.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='Manager']" position="replace">
+                <filter context="{'group_by': 'user_id'}" name="Trainer" string="Trainer"/>
+            </xpath>
+            <xpath expr="//filter[@name='Partner']" position="replace">
+                <filter context="{'group_by': 'partner_id'}" name="Member" string="Member"/>
+            </xpath>
+        </field>
+    </record>
+    <!--Action for see My workout plan  -->
+    <record id="action_project_list" model="ir.actions.act_window">
+        <field name="name">My Workout Plans</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.project</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_id" ref="project.view_project_kanban"/>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('type','=','workout')]</field>
+        <field name="context">{'default_type':'workout'}</field>
+    </record>
+    <menuitem action="action_project_list" groups="gym.group_gym_operator,gym.group_gym_member" id="menu_my_project_list" parent="menu_workout_main" sequence="3"/>
+    <!-- ***************  Workout Tasks List********************-->
+    <record id="view_task_list_form" model="ir.ui.view">
+        <field name="name">task.list.form</field>
+        <field name="model">task.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field class="oe_inline" name="name" required="1"/>
+                    </group>
+                    <group>
+                        <separator colspan="4" string="List of Exercises"/>
+                        <field name="exercise_ids" nolabel="1"/>
+                    </group>
+                    <group>
+                        <field name="repeat_days"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_task_list_tree" model="ir.ui.view">
+        <field name="name">task.list.tree</field>
+        <field name="model">task.list</field>
+        <field name="arch" type="xml">
+            <tree string="Workout Description">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="exercise_ids"/>
+                <field name="repeat_days"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Search view of task-->
+    <record id="view_task_list_search" model="ir.ui.view">
+        <field name="name">view.task.list.search</field>
+        <field name="model">task.list</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter context="{'group_by':'workout_id'}" domain="[]" name="fil_task" string="Task"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_task_list" model="ir.actions.act_window">
+        <field name="name">Task Description</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">task.list</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_fil_task':1}</field>
+    </record>
+    <menuitem action="action_task_list" id="menu_task_list" name="Task Description" parent="project.menu_project_config" sequence="10"/>
+    <!-- ***************  Workout Plan Master********************-->
+    <record id="view_workout_form" model="ir.ui.view">
+        <field name="name">workout.form</field>
+        <field name="model">workout.master</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="e.g Weight Loss" required="1"/>
+                        <field domain="[('id', '!=', active_id)]" name="parent_id"/>
+                        <field name="repeat_days_of_task"/>
+                    </group>
+                    <separator string="Workout Routine"/>
+                    <group>
+                        <field name="task_description_ids" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_workout_tree" model="ir.ui.view">
+        <field name="name">workout.tree</field>
+        <field name="model">workout.master</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="task_description_ids"/>
+                <field name="repeat_days_of_task"/>
+            </tree>
+        </field>
+    </record>
+    <!--Kanban view of Workout -->
+    <record id="view_workout_kanban" model="ir.ui.view">
+        <field name="name">workout.kanban</field>
+        <field name="model">workout.master</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban">
+                <field name="name"/>
+                <!--  <field name="total_days"/>-->
+                <field name="repeat_days_of_task"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div style="margin: 0 auto; top: 0; left: 0; bottom: 0; right: 0;">
+                                <div style="padding-top:25px;padding-right:10px;padding-left:10px;">
+                                    <div>
+                                        <center>
+                                            <img alt="Contact" src="gym/static/image/index1.png" style="width: 30%;"/>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div style="padding-bottom:10px">
+                                    <h3 class="text-center" style="margin-top:8px">
+                                        <t t-esc="record.name.value"/>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="o_project_kanban_boxes">
+                                <div class="o_project_kanban_box text-center" style="background-color:#958e9a; width: 100%;" t-if="record.repeat_days_of_task.raw_value">
+                                    <span class="o_value">
+                                        <t t-esc="record.repeat_days_of_task.value"/>
+                                    </span>
+                                    <span class="o_label">Days</span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="action_workout" model="ir.actions.act_window">
+        <field name="name">Workout Plans</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">workout.master</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click here to add new workout plan.
+            </p>
+        </field>
+    </record>
+    <!--parent menu -->
+    <menuitem action="action_workout" groups="gym.group_gym_operator,gym.group_gym_trainer" id="menu_workout" parent="menu_workout_main" sequence="2"/>
+</odoo>

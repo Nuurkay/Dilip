@@ -1,0 +1,17 @@
+<odoo noupdate="1">
+
+    <!-- Demo Data for Memberships  -->
+    <record id="product.product_product_1" model="product.product">
+        <field name="membership">False</field>
+        <field name="is_membership">True</field>
+    </record>
+    <record id="product.product_product_1" model="product.product">
+        <field name="membership">False</field>
+        <field name="is_membership">True</field>
+    </record>
+    <record id="product.product_product_1" model="product.product">
+        <field name="membership">False</field>
+        <field name="is_membership">True</field>
+    </record>
+
+</odoo>

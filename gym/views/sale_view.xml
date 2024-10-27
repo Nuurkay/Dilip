@@ -1,0 +1,29 @@
+<odoo>
+
+    <!-- form of the sale -->
+    <record id="view_quatation_form_inherit" model="ir.ui.view">
+        <field name="name">view.quatation.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="before">
+                <group>
+                    <separator string="Membership Detail" colspan="2"/>
+                    <field name="membership"
+                           attrs="{'readonly':[('state','not in', ['draft','sent'])]}"/>
+                </group>
+                <group colspan="4" col="4">
+                    <field name="start_date"
+                           class="oe_inline"
+                           attrs="{'invisible':[('membership','=',False)],'required':[('membership','=',True)], 'readonly':[('state','not in', ['draft','sent'])]}"/>
+                    <field name="end_date"
+                           string='End Date'
+                           class="oe_inline"
+                           attrs="{'invisible':[('membership','=',False)],'required':[('membership','=',True)], 'readonly':[('state','not in', ['draft','sent'])]}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

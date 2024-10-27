@@ -1,0 +1,12 @@
+<odoo noupdate="1">
+
+    <!-- Sequence of Member ID -->
+    <record id="mem_seq" model="ir.sequence">
+        <field name="name">Member Sequence</field>
+        <field name="code">res.partner</field>
+        <field name="number_increment">1</field>
+        <field name="padding">5</field>
+        <field name="prefix">MEM/%(year)s/</field>
+    </record>
+
+</odoo>

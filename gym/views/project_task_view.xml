@@ -1,0 +1,63 @@
+<odoo>
+
+    <record id="view_project_task_form_form_inherit" model="ir.ui.view">
+        <field name="name">view.project.task.form.inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='date_deadline']" position="before">
+                    <field name="schedule_date"/>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="reviewer_id"/>
+                </xpath>
+                <xpath expr="//group/field[@name='tag_ids']" position="after">
+                    <field name="task_type" invisible="1"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!--Kanban view-->
+    <record id="view_project_task_kanban_inherit" model="ir.ui.view">
+        <field name="name">view.project.kanban.inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <div>
+                    <lable>Schedule Date -</lable>
+                    <field name="schedule_date"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!--Project form view  -->
+    <record id="view_project_form_client" model="ir.ui.view">
+        <field name="name">view.project.form.inherited1</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <field name="type" invisible="1"/>
+                    </group>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!-- Action of Member Tasks -->
+    <record id="action_view_member_task" model="ir.actions.act_window">
+        <field name="name">Member Tasks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.task</field>
+         <field name="binding_view_types">form</field>
+        <field name="view_mode">kanban,tree,form,calendar,pivot,graph,activity</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+    </record>
+
+</odoo>

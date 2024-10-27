@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="member_kanban_view_new_inherit" model="ir.ui.view">
+        <field name="name">member.kanban.view.new.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="gym.member_kanban_view_new" />
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <templates position="before">
+                <field name="attendance_state" />
+            </templates>
+            <xpath
+                expr="//div[hasclass('oe_kanban_global_click','o_res_partner_kanban')]/div/div"
+                position="inside"
+            >
+                <div>
+                    <div
+                        class="float-right"
+                        t-if="record.attendance_state.raw_value == 'checked_in'"
+                    >
+                        <span
+                            id="oe_attendance_status"
+                            class="fa fa-circle text-success"
+                            role="img"
+                            aria-label="Available"
+                            title="Available"
+                        />
+                    </div>
+                    <div
+                        class="float-right"
+                        t-if="record.attendance_state.raw_value == 'checked_out'"
+                    >
+                        <span
+                            id="oe_attendance_status"
+                            class="fa fa-circle text-danger"
+                            role="img"
+                            aria-label="Not available"
+                            title="Not available"
+                        />
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_partner_attendance_form_inherit" model="ir.ui.view">
+        <field name="name">partner.attendance.form</field>
+        <field name="model">partner.attendance</field>
+        <field
+            name="inherit_id"
+            ref="scs_partner_attendance.view_partner_attendance_form"
+        />
+        <field name="arch" type="xml">
+            <field name="worked_hours" position="after">
+                <field name="is_member" invisible="1" />
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="domain">[('is_member', '=', True)]</attribute>
+                <attribute name="string">Member</attribute>
+            </field>
+        </field>
+    </record>
+    <record id="member_partner_attendance_action" model="ir.actions.act_window">
+        <field name="name">Attendances</field>
+        <field name="res_model">partner.attendance</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field
+            name="context"
+        >{'default_is_member': True, "search_default_today":1}</field>
+        <field name="help" type="html">
+            <p>The attendance records of your Partners will be displayed
+                here.
+            </p>
+            <p>Please make sure you're using the correct filter if you expected
+                to see any.
+            </p>
+        </field>
+    </record>
+    <!-- Menus -->
+    <menuitem
+        id="menu_member_partner_attendance_manage_attendances"
+        name="Member Attendance"
+        parent="gym.menu_gym"
+        sequence="3"
+        groups="gym.group_gym_member,gym.group_gym_operator,gym.group_gym_manager"
+    />
+    <menuitem
+        id="menu_member_partner_attendance_view_attendances"
+        name="Attendances"
+        parent="menu_member_partner_attendance_manage_attendances"
+        sequence="10"
+        action="member_partner_attendance_action"
+    />
+    <menuitem
+        id="menu_member_partner_attendance_report"
+        name="Analysis Report"
+        parent="menu_member_partner_attendance_manage_attendances"
+        sequence="30"
+        action="scs_partner_attendance.partner_attendance_action_graph"
+    />
+</odoo>

@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workout_master,access.workout.master,model_workout_master,base.group_user,1,1,1,1
+access_task_list,access.task_list,model_task_list,base.group_user,1,1,1,1
+access_workout_master_trainer,access.workout.master.trainer,model_workout_master,gym.group_gym_trainer,1,1,1,1
+access_task_list_trainer,access.task_list.trainer,model_task_list,gym.group_gym_trainer,1,1,1,1
+access_workout_master_member,access.workout.master.member,model_workout_master,gym.group_gym_member,1,0,0,0
+access_task_list_member,access.task_list.member,model_task_list,gym.group_gym_member,1,0,0,0
+access_workout_master_operator,access.workout.master.operator,model_workout_master,gym.group_gym_operator,1,1,1,1
+access_task_list_operator,access.task_list.operator,model_task_list,gym.group_gym_operator,1,1,1,1
+access_workout_master_manager,access.workout.master.manager,model_workout_master,gym.group_gym_manager,1,1,1,1
+access_task_list_manager_manager,access.task_list.manager,model_task_list,gym.group_gym_manager,1,1,1,1
+access_project_project_trainer,access.project_project.trainer,project.model_project_project,gym.group_gym_trainer,1,1,1,1
+access_project_task_group_gym_member,access.group_gym_member.task,project.model_project_task,gym.group_gym_member,1,0,0,0
+access_task_scheduling,access.task_scheduling,model_task_scheduling,base.group_user,1,1,1,0

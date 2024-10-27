@@ -1,0 +1,29 @@
+<odoo>
+
+    <!-- Inherited kanban of res_partner -->
+    <record id="view_member_kanban_inherit" model="ir.ui.view">
+        <field name="name">view.member.kanban.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="gym.member_kanban_view_new"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='color']" position="after">
+                <field name="task_count"/>
+            </xpath>
+            <xpath expr="//div[@class='col-md-12']/div[1]" position="before">
+                <div class="col-md-4 "
+                     style="text-align: center; color:white;" role="button">
+                    <button type="action" class="btn btn-link"
+                            name="%(project.action_view_task)d"
+                            style="color:white;"
+                            context="{'search_default_partner_id': active_id, 'default_partner_id': active_id}">
+                        <h1>
+                            <span t-esc="record.task_count.value"/>
+                        </h1>
+                        <h4>Tasks</h4>
+                    </button>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

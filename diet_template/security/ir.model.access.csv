@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_diet_list,access.diet_list,model_diet_list,base.group_user,1,1,1,1
+access_diet_master,access.diet_master,model_diet_master,base.group_user,1,1,1,1
+access_diet_master_trainer,access.diet_master.trainer,model_diet_master,gym.group_gym_trainer,1,1,1,1
+access_diet_list_trainer,access.diet_list.trainer,model_diet_list,gym.group_gym_trainer,1,1,1,1
+access_diet_master_member,access.diet_master.member,model_diet_master,gym.group_gym_member,1,0,0,0
+access_diet_list_member,access.diet_list.member,model_diet_list,gym.group_gym_member,1,0,0,0
+access_diet_master_operator,access.diet_master.operator,model_diet_master,gym.group_gym_operator,1,1,1,1
+access_diet_list_operator,access.diet_list.operator,model_diet_list,gym.group_gym_operator,1,1,1,1
+access_diet_master_manager,access.diet_master.manager,model_diet_master,gym.group_gym_manager,1,1,1,1
+access_diet_list_manager,access.diet_list.manager,model_diet_list,gym.group_gym_manager,1,1,1,1
+access_project_project_trainer,access.project_project.trainer,project.model_project_project,gym.group_gym_trainer,1,1,1,1
+access_diet_scheduling,access.diet_scheduling,model_diet_scheduling,base.group_user,1,1,1,0

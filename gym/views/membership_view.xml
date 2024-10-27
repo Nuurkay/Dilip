@@ -1,0 +1,288 @@
+<odoo>
+
+    <!-- form of the membership -->
+    <record id="view_membership_form_inherit" model="ir.ui.view">
+        <field name="name">view.membership.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="membership.membership_products_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/div/field[@name='membership_date_from']"
+                   position="attributes">
+                <attribute name="required">0</attribute>
+            </xpath>
+            <xpath expr="//group/div"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group/div/field[@name='membership_date_to']"
+                   position="attributes">
+                <attribute name="required">0</attribute>
+            </xpath>
+            <xpath expr="/form/sheet/group/group[2]/label[1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='description']" position="after">
+                <separator />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_membership_tree_inherit" model="ir.ui.view">
+        <field name="name">view.membership.tree.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="membership.membership_products_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='membership_date_from']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='membership_date_to']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_form_membership_inherit" model="ir.ui.view">
+        <field name="name">view.partner.form.membership.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="membership.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='member_lines']" position="replace">
+                <field name="member_lines" nolabel="1" colspan="4"
+                       readonly="1">
+                    <tree string="Memberships">
+                        <field name="partner"/>
+                        <field name="date" string="Start Date"/>
+                        <field name="end_date"/>
+                        <field name="states"/>
+                    </tree>
+                </field>
+            </xpath>
+            <field name='free_member' position='attributes'>
+                <attribute name='invisible'>True</attribute>
+            </field>
+            <label for='membership_state' position='attributes'>
+                <attribute name='invisible'>True</attribute>
+            </label>
+            <field name='membership_state' position='attributes'>
+                <attribute name='invisible'>True</attribute>
+            </field>
+            <field name='associate_member' position='attributes'>
+                <attribute name='invisible'>True</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!--Action for membership menu -->
+    <record id="action_membership" model="ir.actions.act_window">
+        <field name="name">Membership Plans</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_membership_form_inherit"/>
+        <field name="domain">[('is_membership','=',True)]</field>
+        <field name="context">{'membership':True, 'type':'service',
+            'default_is_membership': True, 'default_type': 'service'}
+        </field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click here to add new membership.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_membership_tree" model="ir.actions.act_window.view">
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="membership.membership_products_tree"/>
+        <field name="act_window_id" ref="action_membership"/>
+    </record>
+
+    <menuitem id="menu_membership_main" name="Membership"
+              parent="gym.menu_gym" sequence="3"
+              groups='gym.group_gym_operator,gym.group_gym_manager,gym.group_gym_member'/>
+
+    <!-- Sub Menu as Membership plan -->
+    <menuitem id="menu_membership" action="action_membership"
+              parent="gym.menu_membership_main"
+              groups='gym.group_gym_operator'/>
+
+    <!-- Form view of membership plan-->
+    <record id="view_membership_plan_form" model="ir.ui.view">
+        <field name="name">view.membership.plan.form</field>
+        <field name="model">membership.membership_line</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="states" widget="statusbar"
+                           statusbar_visible="draft,confirmed,expired,cancel"/>
+                    <button name="action_draft"
+                            type="object"
+                            string="Set to draft"
+                            class="oe_highlight"
+                            groups='gym.group_gym_operator'
+                            attrs="{'invisible':[('states','not in',['cancel'])]}"/>
+                    <button name="action_confirm"
+                            type="object"
+                            string="Confirm"
+                            class="oe_highlight"
+                            groups='gym.group_gym_operator'
+                            attrs="{'invisible':[('states','not in',['draft'])]}"/>
+                    <button name="action_cancel"
+                            string="Cancel"
+                            type="object"
+                            class="oe_highlight"
+                            groups='gym.group_gym_operator'
+                            attrs="{'invisible':[('states','in',['cancel', 'confirm'])]}"/>
+                </header>
+                <sheet>
+                    <group colspan="4" col="4" name="grp_1">
+                        <h1>
+                            <field name="plan_sequence" readonly="1"
+                                   nolabel="1"/>
+                        </h1>
+                        <separator string="Membership Detail" colspan="4"/>
+                        <field name="partner"
+                               string="Member"
+                               class="oe_inline"
+                               context="{'default_is_member':True}"
+                               domain="[('is_member','=',True)]"
+                               required="1"
+                               attrs="{'readonly':[('states','not in',['draft'])]}"/>
+                        <field name="member_price"
+                               string="Membership Fees"
+                               required="0"
+                               class="oe_inline"
+                               attrs="{'readonly':[('states','not in',['draft'])]}"/>
+                        <field name="membership_id"
+                               required="1"
+                               class="oe_inline"
+                               domain="[('is_membership','=',True)]"
+                               context="{'form_view_ref':'gym.view_membership_form_inherit','default_membership':True,
+                               'default_is_membership':True}"
+                               attrs="{'readonly':[('states','not in',['draft'])]}"/>
+                        <field name="sale_order_id"
+                               attrs="{'invisible':[('sale_order_id','=',False)]}"/>
+                        <field name="paid_amount" force_save="1"/>
+                    </group>
+                    <group>
+                        <separator string="Duration" colspan="2"/>
+                        <field name="date"
+                               string='Start Date'
+                               class="oe_inline"
+                               required="1"
+                               attrs="{'readonly':[('states','not in',['draft'])]}"/>
+                        <field name="end_date"
+                               class="oe_inline"
+                               required="1"
+                               attrs="{'readonly':[('states','not in',['draft'])]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of membership plan -->
+    <record id="view_membership_plan_tree" model="ir.ui.view">
+        <field name="name">view.membership.plan.tree</field>
+        <field name="model">membership.membership_line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner"/>
+                <field name="date" string="Start Date"/>
+                <field name="end_date"/>
+                <field name="states"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view of membership plan-->
+    <record id="view_membership_search" model="ir.ui.view">
+        <field name="name">view.membership.search</field>
+        <field name="model">membership.membership_line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner"/>
+                <field name="states"/>
+                <filter name="group_by_member" domain="[]" string="Member"
+                        context="{'group_by':'partner'}"/>
+                <filter name="group_by_state" domain="[]" string="State"
+                        context="{'group_by':'states'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Kanban view of membership -->
+    <record id="view_membership_kanban" model="ir.ui.view">
+        <field name="name">view.membership.kanban</field>
+        <field name="model">membership.membership_line</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column o_kanban_project_tasks"
+                    on_create="quick_create">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_dropdown_kanban dropdown">
+                            </div>
+                            <div class="oe_kanban_content">
+                                <field name="member_price"
+                                       invisible="1"/>
+                                <div class="row">
+                                    <div class="col-6 pull-left text-left"
+                                         col="2" style="padding-right: 0px;">
+                                        <div>
+                                            <strong>
+                                                <field name="partner"/>
+                                            </strong>
+                                        </div>
+                                        <div>
+                                            <lable>Start Date -</lable>
+                                            <field name="date"/>
+                                        </div>
+                                        <div>
+                                            <lable>End Date -</lable>
+                                            <field name="end_date"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 o_assignation_leads_count pull-left text-left"
+                                         style="padding: 0px;">
+                                        <field name="paid_amount"
+                                               widget="gauge"
+                                               style="width:90%; height: 90%;cursor:pointer;"
+                                               options="{'max_field': 'member_price', 'label_field':'member_price'}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="oe_clear"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action of membership plan -->
+    <record id="action_membership_plan" model="ir.actions.act_window">
+        <field name="name">Membership</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">membership.membership_line</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <!--Sub Action of Member membership plan -->
+    <record id="action_member_membership_plan" model="ir.actions.act_window">
+        <field name="name">Member Membership</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">membership.membership_line</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="domain">[('partner', '=', active_id)]</field>
+    </record>
+
+    <!-- Menu of the membership plan -->
+    <menuitem id="menu_membership_plan" action="action_membership_plan"
+              parent="gym.menu_membership_main" sequence="1"/>
+
+</odoo>

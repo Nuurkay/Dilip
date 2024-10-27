@@ -1,0 +1,75 @@
+<odoo>
+    <!--Form view of Trainer Booking -->
+    <record id="view_trainer_booking_form_inherit" model="ir.ui.view">
+        <field name="name">view.trainer.booking.form.inherit</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_ids']" position="after">
+                <div>
+                   <label for="trainer_id" string="Trainer" class="oe_edit_only"/>
+                </div>
+                <field name="trainer_id" domain="[('is_trainer','=',True)]"
+                       context="{'default_is_trainer':True}" required="1"/>
+                <field name="is_trainer_booking" invisible="1"/>
+            </xpath>
+            <xpath expr="//label[@for='partner_ids']" position="attributes">
+                <attribute name="string">Members</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="placeholder">e.g. Session For Yoga</attribute>
+            </xpath>
+            <xpath expr="//page" position="attributes">
+                <attribute name="string">Booking Details</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_ids']" position="attributes">
+                <attribute name="domain">[('is_member','=',True)]</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!--Tree view of Trainer Booking -->
+    <record id="view_trainer_booking_tree_inherit" model="ir.ui.view">
+        <field name="name">view.trainer.booking.tree.inherit</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_ids']" position="after">
+                <field name="trainer_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--Search view of Trainer Booking -->
+    <record id="view_trainer_booking_tree_inherit" model="ir.ui.view">
+        <field name="name">view.trainer.booking.tree.inherit</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_ids']" position="after">
+                <field name="trainer_id"/>
+                <filter name="fil_trainer" domain="[]" string="Trainer"
+                    context="{'group_by':'trainer_id'}"/>
+            </xpath>
+        </field>
+     </record>
+
+     <!--Action for Trainer Booking -->
+    <record id="action_trainer_booking" model="ir.actions.act_window">
+        <field name="name">Trainer Booking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">calendar.event</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_trainer_booking','=',True)]</field>
+        <field name="context">{'booking_default':True}</field> 
+    </record>
+
+    <menuitem id="menu_bookings" name="Booking" parent="gym.menu_gym"
+        sequence="4"/>
+
+    <!--Menu of trainer Booking -->
+    <menuitem id="menu_trainer_booking" action="action_trainer_booking"
+        parent="menu_bookings" groups='gym.group_gym_operator,gym.group_gym_trainer'/>
+    
+</odoo>

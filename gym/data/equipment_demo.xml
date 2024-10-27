@@ -1,0 +1,75 @@
+<odoo noupdate="1">
+
+    <record id="equipment_rec_1" model="product.template">
+        <field name="name">Barbells</field>
+        <field name="is_equipment">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/src/img/barbells.jpg"/>
+        <field name="state">working</field>
+    </record>
+
+    <record id="equipment_rec_2" model="product.template">
+        <field name="name">CALF-MACHINE</field>
+        <field name="is_equipment">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/src/img/CALF-MACHINE.png"/>
+        <field name="state">working</field>
+    </record>
+
+    <record id="equipment_rec_3" model="product.template">
+        <field name="name">CABLES-AND-PULLEYS</field>
+        <field name="is_equipment">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/src/img/CABLES-AND-PULLEYS.png"/>
+        <field name="state">working</field>
+    </record>
+
+    <record id="equipment_rec_4" model="product.template">
+        <field name="name">BENCH-PRESS</field>
+        <field name="is_equipment">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/src/img/BENCH-PRESS.png"/>
+        <field name="state">working</field>
+    </record>
+
+    <record id="equipment_rec_5" model="product.template">
+        <field name="name">DUMBBELLS</field>
+        <field name="is_equipment">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/src/img/DUMBBELLS.png"/>
+        <field name="state">working</field>
+    </record>
+
+    <record id="equipment_rec_6" model="product.template">
+        <field name="name">LEG-EXTENSION-MACHINE</field>
+        <field name="is_equipment">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/src/img/LEG-EXTENSION-MACHINE.png"/>
+        <field name="state">working</field>
+    </record>
+
+    <record id="equipment_rec_7" model="product.template">
+        <field name="name">INCLINE-BENCH-PRESS</field>
+        <field name="is_equipment">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/src/img/INCLINE-BENCH-PRESS.png"/>
+        <field name="state">working</field>
+    </record>
+
+    <record id="equipment_rec_8" model="product.template">
+        <field name="name">HAMMER-STRENGTH-MACHINE</field>
+        <field name="is_equipment">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/src/img/HAMMER-STRENGTH-MACHINE.png"/>
+        <field name="state">working</field>
+    </record>
+
+    <record id="equipment_rec_9" model="product.template">
+        <field name="name">KETTLEBELLS</field>
+        <field name="is_equipment">True</field>
+        <field name="image_1920" type="base64"
+               file="gym/static/src/img/KETTLEBELLS.png"/>
+        <field name="state">working</field>
+    </record>
+
+</odoo>

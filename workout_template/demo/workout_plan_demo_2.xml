@@ -1,0 +1,444 @@
+<odoo noupdate="1">
+
+    <!--Weight Loss  -->
+    <record id="workout_plan_5" model="workout.master">
+        <field name="name">Full Body Workout Plan</field>
+    </record>
+
+    <record id="workout_plan_4" model="workout.master">
+        <field name="name">Muscle Building Workout Plan</field>
+    </record>
+
+    <record id="workout_plan_3" model="workout.master">
+        <field name="name">Weight Loss Extreme Plan</field>
+    </record>
+
+    <record id="workout_plan_2" model="workout.master">
+        <field name="name">Weight Loss Intermediate Plan</field>
+        <field name="parent_id" ref='workout_plan_3'/>
+    </record>
+
+    <record id="workout_plan_1" model="workout.master">
+        <field name="name">Weight Loss Basic Plan</field>
+        <field name="parent_id" ref='workout_plan_2'/>
+    </record>
+
+    <!--Full Body Workout Plan -->
+    <record id="workout_plan_line_12" model="task.list">
+        <field name="name">Back</field>
+        <field name="workout_id" ref='workout_plan_5'/>
+    </record>
+
+    <record id="workout_plan_line_13" model="task.list">
+        <field name="name">Biceps</field>
+        <field name="workout_id" ref='workout_plan_5'/>
+    </record>
+
+    <record id="workout_plan_line_14" model="task.list">
+        <field name="name">Chest</field>
+        <field name="workout_id" ref='workout_plan_5'/>
+    </record>
+
+    <record id="workout_plan_line_15" model="task.list">
+        <field name="name">Triceps</field>
+        <field name="workout_id" ref='workout_plan_5'/>
+    </record>
+
+    <record id="workout_plan_line_16" model="task.list">
+        <field name="name">Shoudlers</field>
+        <field name="workout_id" ref='workout_plan_5'/>
+    </record>
+
+    <record id="workout_plan_line_17" model="task.list">
+        <field name="name">Calves</field>
+        <field name="workout_id" ref='workout_plan_5'/>
+    </record>
+
+    <record id="workout_plan_line_18" model="task.list">
+        <field name="name">Legs</field>
+        <field name="workout_id" ref='workout_plan_5'/>
+    </record>
+
+    <record id="workout_plan_line_19" model="task.list">
+        <field name="name">Abs</field>
+        <field name="workout_id" ref='workout_plan_5'/>
+    </record>
+
+    <!--Repetition Data-->
+    <record id="repeat_repeat_data_1" model="repeat.repeat">
+        <field name="name">3</field>
+    </record>
+
+    <record id="repeat_repeat_data_2" model="repeat.repeat">
+        <field name="name">4</field>
+    </record>
+
+    <!--Exercise lines for(Full Body Workout Plan)-->
+    <record id="exercise_line_20" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_12'/>
+        <field name="exercise_name_id" ref='gym.exercise_bench_press'/>
+    </record>
+
+    <record id="exercise_line_21" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_12'/>
+    </record>
+
+    <record id="exercise_line_22" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_13'/>
+        <field name="exercise_name_id" ref='gym.exercise_deadlift'/>
+    </record>
+
+    <record id="exercise_line_23" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_13'/>
+        <field name="exercise_name_id" ref='gym.exercise_biceps_curl'/>
+    </record>
+
+    <record id="exercise_line_24" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_14'/>
+        <field name="exercise_name_id" ref='gym.exercise_chest_fly'/>
+    </record>
+
+    <record id="exercise_line_25" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_14'/>
+        <field name="exercise_name_id" ref='gym.exercise_dumbbell_fly'/>
+    </record>
+
+    <record id="exercise_line_26" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_15'/>
+        <field name="exercise_name_id" ref='gym.exercise_dip'/>
+    </record>
+
+    <record id="exercise_line_27" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_15'/>
+        <field name="exercise_name_id" ref='gym.exercise_Pulldown'/>
+    </record>
+
+    <record id="exercise_line_28" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_16'/>
+        <field name="exercise_name_id" ref='gym.exercise_pullups'/>
+    </record>
+
+    <record id="exercise_line_29" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_16'/>
+        <field name="exercise_name_id" ref='gym.exercise_snatch'/>
+    </record>
+
+    <record id="exercise_line_30" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_17'/>
+        <field name="exercise_name_id" ref='gym.exercise_standing_calf_raise'/>
+    </record>
+
+    <record id="exercise_line_31" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_17'/>
+        <field name="exercise_name_id" ref='gym.exercise_wall_sit'/>
+    </record>
+
+    <record id="exercise_line_32" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_18'/>
+        <field name="exercise_name_id" ref='gym.exercise_leg_extension'/>
+    </record>
+
+    <record id="exercise_line_33" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_18'/>
+        <field name="exercise_name_id" ref='gym.exercise_leg_curl'/>
+    </record>
+
+    <record id="exercise_line_34" model="exercise.lines">
+        <field name="sets">10</field>
+       <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_19'/>
+        <field name="exercise_name_id" ref='gym.exercise_crunch'/>
+    </record>
+
+    <record id="exercise_line_35" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_19'/>
+        <field name="exercise_name_id" ref='gym.exercise_bench_press'/>
+    </record>
+
+
+    <!--Muscle Building Workout -->
+    <record id="workout_plan_line_10" model="task.list">
+        <field name="name">Upper Body</field>
+        <field name="workout_id" ref='workout_plan_4'/>
+    </record>
+
+    <record id="workout_plan_line_11" model="task.list">
+        <field name="name">Lower Body</field>
+        <field name="workout_id" ref='workout_plan_4'/>
+    </record>
+
+    <!--Exercise lines for(Muscle Building Workout)-->
+    <record id="exercise_line_10" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_10'/>
+        <field name="exercise_name_id" ref='gym.exercise_pullups'/>
+    </record>
+
+    <record id="exercise_line_11" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_10'/>
+        <field name="exercise_name_id" ref='gym.exercise_deadlift'/>
+    </record>
+
+    <record id="exercise_line_12" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_10'/>
+        <field name="exercise_name_id" ref='gym.exercise_dip'/>
+    </record>
+
+    <record id="exercise_line_13" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_10'/>
+        <field name="exercise_name_id" ref='gym.exercise_biceps_curl'/>
+    </record>
+
+    <record id="exercise_line_14" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_10'/>
+        <field name="exercise_name_id" ref='gym.exercise_bench_press'/>
+    </record>
+
+    <record id="exercise_line_15" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_11'/>
+        <field name="exercise_name_id" ref='gym.exercise_crunch'/>
+    </record>
+
+    <record id="exercise_line_16" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_11'/>
+        <field name="exercise_name_id" ref='gym.exercise_wall_sit'/>
+    </record>
+
+    <record id="exercise_line_17" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_11'/>
+        <field name="exercise_name_id" ref='gym.exercise_standing_calf_raise'/>
+    </record>
+
+    <record id="exercise_line_18" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_11'/>
+        <field name="exercise_name_id" ref='gym.exercise_seated_calf_raise'/>
+    </record>
+
+    <record id="exercise_line_19" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_11'/>
+        <field name="exercise_name_id" ref='gym.exercise_leg_extension'/>
+    </record>
+
+    <!--Workout Weight loss -->
+    <record id="workout_plan_line_51" model="task.list">
+        <field name="name">Upper Body</field>
+        <field name="workout_id" ref='workout_plan_1'/>
+    </record>
+
+    <record id="workout_plan_line_52" model="task.list">
+        <field name="name">Shoulder</field>
+        <field name="workout_id" ref='workout_plan_2'/>
+    </record>
+
+    <record id="workout_plan_line_53" model="task.list">
+        <field name="name">Lower Body</field>
+        <field name="workout_id" ref='workout_plan_3'/>
+    </record>
+
+    <record id="workout_plan_line_54" model="task.list">
+        <field name="name">Abs</field>
+        <field name="workout_id" ref='workout_plan_1'/>
+    </record>
+
+    <record id="workout_plan_line_55" model="task.list">
+        <field name="name">Lower Back</field>
+        <field name="workout_id" ref='workout_plan_2'/>
+    </record>
+
+    <record id="workout_plan_line_56" model="task.list">
+        <field name="name">Forearms</field>
+        <field name="workout_id" ref='workout_plan_3'/>
+    </record>
+
+    <record id="workout_plan_line_57" model="task.list">
+        <field name="name">Biceps</field>
+        <field name="workout_id" ref='workout_plan_1'/>
+    </record>
+
+    <record id="workout_plan_line_58" model="task.list">
+        <field name="name">Triceps</field>
+        <field name="workout_id" ref='workout_plan_2'/>
+    </record>
+
+    <record id="workout_plan_line_59" model="task.list">
+        <field name="name">Chest</field>
+        <field name="workout_id" ref='workout_plan_3'/>
+    </record>
+
+    <!--Exercise lines -->
+    <record id="exercise_line_71" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_51'/>
+        <field name="exercise_name_id" ref='gym.exercise_pullups'/>
+    </record>
+
+    <record id="exercise_line_72" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_1')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_52'/>
+        <field name="exercise_name_id" ref='gym.exercise_deadlift'/>
+    </record>
+
+    <record id="exercise_line_73" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_53'/>
+        <field name="exercise_name_id" ref='gym.exercise_dip'/>
+    </record>
+
+    <record id="exercise_line_74" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_54'/>
+        <field name="exercise_name_id" ref='gym.exercise_dumbbell_fly'/>
+    </record>
+
+    <record id="exercise_line_75" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_55'/>
+        <field name="exercise_name_id" ref='gym.exercise_snatch'/>
+    </record>
+
+    <record id="exercise_line_76" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_56'/>
+        <field name="exercise_name_id" ref='gym.exercise_deadlift'/>
+    </record>
+
+    <record id="exercise_line_77" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_57'/>
+        <field name="exercise_name_id" ref='gym.exercise_dip'/>
+    </record>
+
+    <record id="exercise_line_78" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_58'/>
+        <field name="exercise_name_id" ref='gym.exercise_pullups'/>
+    </record>
+
+    <record id="exercise_line_79" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_59'/>
+        <field name="exercise_name_id" ref='gym.exercise_dumbbell_press'/>
+    </record>
+
+    <record id="exercise_line_80" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_51'/>
+        <field name="exercise_name_id" ref='gym.exercise_deadlift'/>
+    </record>
+
+    <record id="exercise_line_81" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_54'/>
+        <field name="exercise_name_id" ref='gym.exercise_crunch'/>
+    </record>
+
+    <record id="exercise_line_82" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_57'/>
+        <field name="exercise_name_id" ref='gym.exercise_biceps_curl'/>
+    </record>
+
+    <record id="exercise_line_83" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_55'/>
+        <field name="exercise_name_id" ref='gym.exercise_wall_sit'/>
+    </record>
+
+    <record id="exercise_line_84" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_52'/>
+        <field name="exercise_name_id" ref='gym.exercise_barbell_row'/>
+    </record>
+
+    <record id="exercise_line_85" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_58'/>
+        <field name="exercise_name_id" ref='gym.exercise_Pulldown'/>
+    </record>
+
+    <record id="exercise_line_86" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_53'/>
+        <field name="exercise_name_id" ref='gym.exercise_wall_sit'/>
+    </record>
+
+    <record id="exercise_line_87" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_56'/>
+        <field name="exercise_name_id" ref='gym.exercise_dumbbell_press'/>
+    </record>
+
+    <record id="exercise_line_88" model="exercise.lines">
+        <field name="sets">10</field>
+        <field name="reps_ids" eval="[(6, 0, [ref('workout_template.repeat_repeat_data_2')])]"/>
+        <field name="special_exercises_id" ref='workout_plan_line_59'/>
+        <field name="exercise_name_id" ref='gym.exercise_chest_fly'/>
+    </record>
+
+</odoo>

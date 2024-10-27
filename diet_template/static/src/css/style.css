@@ -1,0 +1,27 @@
+.scs_contactus_form{
+  border-radius: 0px !important;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.scs_contactus_form:-webkit-input-placeholder {
+   color: #ffffff;
+}
+
+.scs_contactus_form:-moz-placeholder { /* Firefox 18- */
+   color: #ffffff;
+}
+
+.scs_contactus_form::-moz-placeholder {  /* Firefox 19+ */
+   color: #ffffff;
+}
+
+.scs_contactus_form:-ms-input-placeholder {  
+   color: #ffffff;
+}
+
+.scs_contactus_setting{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}

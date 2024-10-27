@@ -1,0 +1,119 @@
+<odoo noupdate="1">
+
+    <record id="equipment_pullups" model="product.template">
+        <field name="name">Pull Up Bar</field>
+    </record>
+
+    <record id="exercise_pullups" model="exercise.exercise">
+        <field name="name">Pull-ups</field>
+        <field name="equipment_id" ref="gym.equipment_pullups"/>
+    </record>
+
+    <record id="image_attachment_1" model="ir.attachment">
+        <field name="name">Pull-ups</field>
+        <field name="datas" type="base64" file="gym/static/image/pullup_2.jpeg"/>
+    </record>
+
+    <record id="image_attachment_2" model="ir.attachment">
+        <field name="name">Pull-ups</field>
+        <field name="datas" type="base64" file="gym/static/image/pullup.jpeg"/>
+    </record>
+
+    <record id="image_attachment_3" model="ir.attachment">
+        <field name="name">Pull-ups</field>
+        <field name="datas" type="base64" file="gym/static/image/pullup-4.jpeg"/>
+    </record>
+
+    <record id="exercise_Pulldown" model="exercise.exercise">
+        <field name="name">Pull down</field>
+    </record>
+
+    <record id="exercise_deadlift" model="exercise.exercise">
+        <field name="name">Deadlift</field>
+    </record>
+
+    <record id="exercise_dip" model="exercise.exercise">
+        <field name="name">Dip</field>
+    </record>
+
+    <record id="exercise_leg_curl" model="exercise.exercise">
+        <field name="name">Leg curl</field>
+    </record>
+
+    <record id="exercise_leg_press" model="exercise.exercise">
+        <field name="name">Leg press</field>
+    </record>
+
+    <record id="exercise_dumbbell_fly" model="exercise.exercise">
+        <field name="name">Dumbbell fly</field>
+    </record>
+
+    <record id="exercise_dumbbell_press" model="exercise.exercise">
+        <field name="name">Dumbbell press</field>
+    </record>
+
+    <record id="exercise_leg_extension" model="exercise.exercise">
+        <field name="name">Leg Extension</field>
+    </record>
+
+    <record id="exercise_snatch" model="exercise.exercise">
+        <field name="name">Snatch</field>
+    </record>
+
+    <record id="exercise_seated_calf_raise" model="exercise.exercise">
+        <field name="name">Seated Calf Raise</field>
+    </record>
+
+    <record id="equipment_Bench_press" model="product.template">
+        <field name="name">Bench Press Machine</field>
+    </record>
+
+    <record id="exercise_bench_press" model="exercise.exercise">
+        <field name="name">Bench Press</field>
+        <field name="equipment_id" ref="gym.equipment_Bench_press"/>
+    </record>
+
+    <record id="image_attachment_4" model="ir.attachment">
+        <field name="name">Bench Press</field>
+        <field name="datas" type="base64" file="gym/static/image/bench-1.jpeg"/>
+    </record>
+
+    <record id="image_attachment_5" model="ir.attachment">
+        <field name="name">Bench Press</field>
+        <field name="datas" type="base64" file="gym/static/image/bench-2.jpeg"/>
+    </record>
+
+    <record id="image_attachment_6" model="ir.attachment">
+        <field name="name">Bench Press</field>
+        <field name="datas" type="base64" file="gym/static/image/bench-3.jpeg"/>
+    </record>
+
+    <record id="exercise_Shoulder_press" model="exercise.exercise">
+        <field name="name">Shoulder Press</field>
+    </record>
+
+    <record id="exercise_crunch" model="exercise.exercise">
+        <field name="name">Crunch</field>
+    </record>
+
+    <record id="exercise_biceps_curl" model="exercise.exercise">
+        <field name="name">Biceps Curl</field>
+    </record>
+
+    <record id="exercise_wall_sit" model="exercise.exercise">
+        <field name="name">Wall sit</field>
+    </record>
+
+    <record id="exercise_standing_calf_raise" model="exercise.exercise">
+        <field name="name">Standing calf raise</field>
+    </record>
+
+    <record id="exercise_chest_fly" model="exercise.exercise">
+        <field name="name">Chest fly</field>
+    </record>
+
+    <record id="exercise_barbell_row" model="exercise.exercise">
+        <field name="name">Bent-over barbell rows</field>
+    </record>
+
+</odoo>

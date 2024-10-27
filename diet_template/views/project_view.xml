@@ -1,0 +1,223 @@
+<odoo>
+
+    <menuitem id="menu_workout_main" name="Workout"
+              parent="gym.menu_gym" sequence="3"/>
+
+    <record id="project_search_view" model="ir.ui.view">
+        <field name="name">view.project.search.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="fil_by_customer"
+                        context="{'group_by':'partner_id'}" string="Customer"/>
+            </search>
+        </field>
+    </record>
+
+    <!--Action for see My Diet plan  -->
+    <record id="action_diet_project_list" model="ir.actions.act_window">
+        <field name="name">My Diet Plans</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.project</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('type','=','diet'),]</field>
+        <field name="context">{'default_type':'diet'}</field>
+    </record>
+    <menuitem id="menu_my_diet_project_list"
+              action="action_diet_project_list" parent="menu_diet_main"
+              sequence="5"/>
+
+    <!-- ***************  Diet Description********************-->
+    <record id="view_diet_list_form" model="ir.ui.view">
+        <field name="name">diet.list.form</field>
+        <field name="model">diet.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group colspan="4" cols="4">
+                        <field name="name" required="1"/>
+                        <group>
+                            <separator string="List of Meals" colspan="4"/>
+                            <field name="food_item_ids" nolabel="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_diet_list_tree" model="ir.ui.view">
+        <field name="name">diet.list.tree</field>
+        <field name="model">diet.list</field>
+        <field name="arch" type="xml">
+            <tree string="Diet Meals">
+                <field name="sequence" widget='handle'/>
+                <field name="name"/>
+                <!--  <field name="exercise_ids"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_diet_list" model="ir.actions.act_window">
+        <field name="name">Diet Meals</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">diet.list</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <menuitem id="menu_diet_list" action="action_diet_list"
+              name="Meals" parent="menu_diet_main" sequence="2"
+              groups='gym.group_gym_operator,gym.group_gym_trainer'/>
+
+    <!-- ***************  Diet Description********************-->
+    <record id="view_diet_list_form" model="ir.ui.view">
+        <field name="name">diet.list.form</field>
+        <field name="model">diet.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                    </group>
+                    <separator string='Meal Interval'/>
+                    <group>
+                        <field name="food_item_ids" nolabel='1'/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_diet_list_tree" model="ir.ui.view">
+        <field name="name">diet.list.tree</field>
+        <field name="model">diet.list</field>
+        <field name="arch" type="xml">
+            <tree string="Diet Meals">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_diet_list" model="ir.actions.act_window">
+        <field name="name">Diet Meals</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">diet.list</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click here to add new diet meal.
+            </p>
+
+        </field>
+    </record>
+
+    <!-- ***************  Diet Plan********************-->
+    <record id="view_diet_form" model="ir.ui.view">
+        <field name="name">diet.form</field>
+        <field name="model">diet.master</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="name" required="1"
+                                   placeholder="e.g Weight Loss"/>
+                        </h1>
+                    </group>
+                    <group>
+                        <field name="total_days"/>
+                    </group>
+                    <separator string='Diet Meals'/>
+                    <group>
+                        <field name="diet_plan_ids" nolabel='1'/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_diet_tree" model="ir.ui.view">
+        <field name="name">diet.tree</field>
+        <field name="model">diet.master</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="diet_plan_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Kanban view of Diet -->
+    <record model="ir.ui.view" id="view_workout_kanban">
+        <field name="name">diet.master</field>
+        <field name="model">diet.master</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban">
+                <field name="name"/>
+                <field name="total_days"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div style="margin: 0 auto; top: 0; left: 0; bottom: 0; right: 0;">
+                                <div style="padding-top:25px;padding-right:10px;padding-left:10px;">
+                                    <div>
+                                        <center>
+                                            <img src="/gym/static/image/diet.jpg"
+                                                 style="width: 30%;"
+                                                 alt="Contact"/>
+                                        </center>
+                                    </div>
+
+                                </div>
+                                <div style="padding-bottom:10px">
+                                    <h3 class="text-center"
+                                        style="margin-top:8px">
+                                        <t t-esc="record.name.value"/>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="o_project_kanban_boxes">
+                                <div t-if="record.total_days.raw_value"
+                                     class="o_project_kanban_box text-center"
+                                     style="background-color:#958e9a; width: 100%;">
+                                    <span class="o_value">
+                                        <t t-esc="record.total_days.value"/>
+                                    </span>
+                                    <span class="o_label">Days</span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_diet" model="ir.actions.act_window">
+        <field name="name">Diet Plans</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">diet.master</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click here to add new diet routine.
+            </p>
+        </field>
+    </record>
+
+    <!--parent menu -->
+    <menuitem id="menu_diet" action="action_diet"
+              parent="menu_diet_main" sequence="3"
+              groups='gym.group_gym_operator,gym.group_gym_trainer'/>
+
+</odoo>

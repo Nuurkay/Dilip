@@ -1,0 +1,33 @@
+<odoo>
+    <record id="action_workout_with_trainer" model="ir.actions.act_window">
+        <field name="name">Workout With Trainer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">calendar.event</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('partner_ids', '=', active_id)]</field>
+        <field name="context">{'create': False, 'edit': False}</field>
+    </record>
+
+    <!-- Meeting button on Member form view -->
+    <record id="view_partners_form_crm_booking_inherit" model="ir.ui.view">
+        <field name="name">view.res.partner.form.crm.booking.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="crm.view_partners_form_crm1"/>
+        <field name="arch" type="xml">
+             <div name="button_box" position="inside">
+                <button name="%(action_workout_with_trainer)d"
+                        class="oe_stat_button"
+                        icon="fa-users"
+                        type="action">
+                    <field name="workout_with_trainer" widget="statinfo"
+                           string="Worout with Trainer"/>
+                </button>
+            </div>
+            <xpath expr="//field[@name='meeting_count']" position="attributes">
+                 <attribute name="string">Bookings</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+ 

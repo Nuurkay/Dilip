@@ -1,0 +1,31 @@
+<odoo>
+
+    <!--sale -->
+    <menuitem name="Sales"
+              id="sales_team.menu_base_partner"
+              web_icon="sale,static/description/icon.png"
+              groups="gym.group_menu_visible"/>
+
+    <!-- calendar -->
+    <menuitem
+            id="calendar.mail_menu_calendar"
+            name="Calendar"
+            sequence="2"
+            action="calendar.action_calendar_event"
+            web_icon="calendar,static/description/icon.png"
+            groups="-base.group_user,gym.group_menu_visible"/>
+
+    <!--Employee  -->
+    <menuitem
+            id="hr.menu_hr_root"
+            name="Employees"
+            groups="-hr.group_hr_manager,-hr.group_hr_user,-base.group_user,gym.group_menu_visible"
+            web_icon="hr,static/description/icon.png"
+            sequence="75"/>
+
+    <!-- Member -->
+    <menuitem name="Members" id="membership.menu_association"
+              sequence="15" web_icon="membership,static/description/icon.png"
+              groups="gym.group_menu_visible"/>
+
+</odoo>

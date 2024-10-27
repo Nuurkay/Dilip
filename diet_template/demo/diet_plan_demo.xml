@@ -1,0 +1,1163 @@
+<odoo>
+
+    <!--diet -->
+    <record id="diet_plan_line_108" model="diet.list">
+        <field name="name">Detox diet Plan</field>
+    </record>
+    <record id="diet_plan_line_109" model="diet.list">
+        <field name="name">High Carbohydrate Diet</field>
+    </record>
+    <record id="diet_plan_line_110" model="diet.list">
+        <field name="name">Healthy Fat Diet</field>
+    </record>
+    <record id="diet_plan_line_111" model="diet.list">
+        <field name="name">3000 Calories Plan</field>
+    </record>
+    <record id="diet_plan_line_115" model="diet.list">
+        <field name="name">1200 Calories Plan</field>
+    </record>
+    <record id="diet_plan_line_116" model="diet.list">
+        <field name="name">High in Carbs</field>
+    </record>
+    <record id="diet_plan_line_117" model="diet.list">
+        <field name="name">High in Protien</field>
+    </record>
+    <record id="diet_plan_line_118" model="diet.list">
+        <field name="name">Low Fat</field>
+    </record>
+    <record id="diet_plan_line_119" model="diet.list">
+        <field name="name">Low Calories</field>
+    </record>
+    <record id="diet_plan_line_120" model="diet.list">
+        <field name="name">Low sodium</field>
+    </record>
+
+    <!-- Diet plans -->
+    <record id="diet_plan_111" model="diet.master">
+        <field name="name">Diet Plan For Weight Gain</field>
+        <field name="diet_plan_ids"
+               eval="[(6,0,[ref('diet_plan_line_111'),ref('diet_plan_line_110'),ref('diet_plan_line_109')])]"/>
+    </record>
+    <record id="diet_plan_112" model="diet.master">
+        <field name="name">Diet Plan For Weight Loss</field>
+        <field name="diet_plan_ids"
+               eval="[(6,0,[ref('diet_plan_line_115'),ref('diet_plan_line_108')])]"/>
+    </record>
+    <record id="diet_plan_113" model="diet.master">
+        <field name="name">High Protien Diet</field>
+        <field name="diet_plan_ids"
+               eval="[(6,0,[ref('diet_plan_line_116'),ref('diet_plan_line_117'),ref('diet_plan_line_118'),ref('diet_plan_line_119'),ref('diet_plan_line_120')])]"/>
+    </record>
+
+    <!--diet paln Weight Loss (Detox diet Plan)-->
+    <record id="diet_item_line_7" model="diet.plan.lines">
+        <field name="interval">early_morning</field>
+        <field name="diet_list_id" ref='diet_plan_line_108'/>
+    </record>
+    <record id="diet_item_line_8" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_108'/>
+    </record>
+    <record id="diet_item_line_9" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_108'/>
+    </record>
+    <record id="diet_item_line_10" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_108'/>
+    </record>
+    <record id="diet_item_line_11" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_108'/>
+    </record>
+    <record id="diet_item_line_12" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_108'/>
+    </record>
+
+    <!--Food For Weight Loss(Detox diet Plan)-->
+    <record id="food_item_23" model="food.item">
+        <field name="food_id" ref='diet_item_line_7'/>
+        <field name="food_name_id" ref='gym.food_product_19'/>
+        <field name="quantity">2</field>
+
+    </record>
+    <record id="food_item_24" model="food.item">
+        <field name="food_id" ref='diet_item_line_8'/>
+        <field name="food_name_id" ref='gym.food_product_17'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_25" model="food.item">
+        <field name="food_id" ref='diet_item_line_8'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_26" model="food.item">
+        <field name="food_id" ref='diet_item_line_8'/>
+        <field name="food_name_id" ref='gym.food_product_23'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_27" model="food.item">
+        <field name="food_id" ref='diet_item_line_9'/>
+        <field name="food_name_id" ref='gym.food_product_28'/>
+        <field name="quantity">20</field>
+    </record>
+    <record id="food_item_28" model="food.item">
+        <field name="food_id" ref='diet_item_line_9'/>
+        <field name="food_name_id" ref='gym.food_product_11'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_29" model="food.item">
+        <field name="food_id" ref='diet_item_line_10'/>
+        <field name="food_name_id" ref='gym.food_product_3'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_30" model="food.item">
+        <field name="food_id" ref='diet_item_line_10'/>
+        <field name="food_name_id" ref='gym.food_product_8'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_31" model="food.item">
+        <field name="food_id" ref='diet_item_line_10'/>
+        <field name="food_name_id" ref='gym.food_product_16'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_32" model="food.item">
+        <field name="food_id" ref='diet_item_line_11'/>
+        <field name="food_name_id" ref='gym.food_product_17'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_33" model="food.item">
+        <field name="food_id" ref='diet_item_line_11'/>
+        <field name="food_name_id" ref='gym.food_product_14'/>
+        <field name="quantity">20</field>
+    </record>
+    <record id="food_item_34" model="food.item">
+        <field name="food_id" ref='diet_item_line_12'/>
+        <field name="food_name_id" ref='gym.food_product_22'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_35" model="food.item">
+        <field name="food_id" ref='diet_item_line_12'/>
+        <field name="food_name_id" ref='gym.food_product_27'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_36" model="food.item">
+        <field name="food_id" ref='diet_item_line_12'/>
+        <field name="food_name_id" ref='gym.food_product_3'/>
+        <field name="quantity">1</field>
+    </record>
+
+    <!--diet paln Weight Gain (High Carbohydrate Diet)-->
+    <record id="diet_item_line_1" model="diet.plan.lines">
+        <field name="interval">early_morning</field>
+        <field name="diet_list_id" ref='diet_plan_line_109'/>
+    </record>
+    <record id="diet_item_line_2" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_109'/>
+    </record>
+    <record id="diet_item_line_3" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_109'/>
+    </record>
+    <record id="diet_item_line_4" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_109'/>
+    </record>
+    <record id="diet_item_line_5" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_109'/>
+    </record>
+    <record id="diet_item_line_6" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_109'/>
+    </record>
+
+    <!--Food For Weight Gain  (High Carbohydrate Diet)-->
+    <record id="food_item_3" model="food.item">
+        <field name="food_id" ref='diet_item_line_1'/>
+        <field name="food_name_id" ref='gym.food_product_19'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_4" model="food.item">
+        <field name="food_id" ref='diet_item_line_2'/>
+        <field name="food_name_id" ref='gym.food_product_1'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_5" model="food.item">
+        <field name="food_id" ref='diet_item_line_2'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_6" model="food.item">
+        <field name="food_id" ref='diet_item_line_2'/>
+        <field name="food_name_id" ref='gym.food_product_6'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_7" model="food.item">
+        <field name="food_id" ref='diet_item_line_2'/>
+        <field name="food_name_id" ref='gym.food_product_29'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_8" model="food.item">
+        <field name="food_id" ref='diet_item_line_3'/>
+        <field name="food_name_id" ref='gym.food_product_25'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_9" model="food.item">
+        <field name="food_id" ref='diet_item_line_3'/>
+        <field name="food_name_id" ref='gym.food_product_27'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_10" model="food.item">
+        <field name="food_id" ref='diet_item_line_3'/>
+        <field name="food_name_id" ref='gym.food_product_28'/>
+        <field name="quantity">20</field>
+    </record>
+    <record id="food_item_11" model="food.item">
+        <field name="food_id" ref='diet_item_line_4'/>
+        <field name="food_name_id" ref='gym.food_product_4'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_12" model="food.item">
+        <field name="food_id" ref='diet_item_line_4'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_13" model="food.item">
+        <field name="food_id" ref='diet_item_line_4'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_14" model="food.item">
+        <field name="food_id" ref='diet_item_line_4'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_15" model="food.item">
+        <field name="food_id" ref='diet_item_line_4'/>
+        <field name="food_name_id" ref='gym.food_product_21'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_16" model="food.item">
+        <field name="food_id" ref='diet_item_line_5'/>
+        <field name="food_name_id" ref='gym.food_product_23'/>
+        <field name="quantity">20</field>
+    </record>
+    <record id="food_item_17" model="food.item">
+        <field name="food_id" ref='diet_item_line_5'/>
+        <field name="food_name_id" ref='gym.food_product_17'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_18" model="food.item">
+        <field name="food_id" ref='diet_item_line_5'/>
+        <field name="food_name_id" ref='gym.food_product_18'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_19" model="food.item">
+        <field name="food_id" ref='diet_item_line_6'/>
+        <field name="food_name_id" ref='gym.food_product_20'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_20" model="food.item">
+        <field name="food_id" ref='diet_item_line_6'/>
+        <field name="food_name_id" ref='gym.food_product_22'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_21" model="food.item">
+        <field name="food_id" ref='diet_item_line_6'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_22" model="food.item">
+        <field name="food_id" ref='diet_item_line_6'/>
+        <field name="food_name_id" ref='gym.food_product_4'/>
+        <field name="quantity">5</field>
+    </record>
+
+    <!--diet paln Weight Gain (Healthy Fat Diet)-->
+    <record id="diet_item_line_881" model="diet.plan.lines">
+        <field name="interval">early_morning</field>
+        <field name="diet_list_id" ref='diet_plan_line_110'/>
+    </record>
+    <record id="diet_item_line_8822" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_110'/>
+    </record>
+    <record id="diet_item_line_8832" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_110'/>
+    </record>
+    <record id="diet_item_line_8842" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_110'/>
+    </record>
+    <record id="diet_item_line_8852" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_110'/>
+    </record>
+    <record id="diet_item_line_8862" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_110'/>
+    </record>
+
+    <!--Food For Weight Gain  (Healthy Fat Diet)-->
+    <record id="food_item_1" model="food.item">
+        <field name="food_id" ref='diet_item_line_881'/>
+        <field name="food_name_id" ref='gym.food_product_19'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_7112" model="food.item">
+        <field name="food_id" ref='diet_item_line_8822'/>
+        <field name="food_name_id" ref='gym.food_product_1'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_7137" model="food.item">
+        <field name="food_id" ref='diet_item_line_8822'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_7138" model="food.item">
+        <field name="food_id" ref='diet_item_line_8832'/>
+        <field name="food_name_id" ref='gym.food_product_19'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_7139" model="food.item">
+        <field name="food_id" ref='diet_item_line_8832'/>
+        <field name="food_name_id" ref='gym.food_product_11'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_7140" model="food.item">
+        <field name="food_id" ref='diet_item_line_8842'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_7141" model="food.item">
+        <field name="food_id" ref='diet_item_line_8842'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_7142" model="food.item">
+        <field name="food_id" ref='diet_item_line_8842'/>
+        <field name="food_name_id" ref='gym.food_product_4'/>
+        <field name="quantity">6</field>
+    </record>
+    <record id="food_item_7143" model="food.item">
+        <field name="food_id" ref='diet_item_line_8842'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_7144" model="food.item">
+        <field name="food_id" ref='diet_item_line_8852'/>
+        <field name="food_name_id" ref='gym.food_product_13'/>
+        <field name="quantity">6</field>
+    </record>
+    <record id="food_item_7145" model="food.item">
+        <field name="food_id" ref='diet_item_line_8852'/>
+        <field name="food_name_id" ref='gym.food_product_14'/>
+        <field name="quantity">20</field>
+    </record>
+    <record id="food_item_7146" model="food.item">
+        <field name="food_id" ref='diet_item_line_8862'/>
+        <field name="food_name_id" ref='gym.food_product_16'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_7147" model="food.item">
+        <field name="food_id" ref='diet_item_line_8862'/>
+        <field name="food_name_id" ref='gym.food_product_20'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_7148" model="food.item">
+        <field name="food_id" ref='diet_item_line_8862'/>
+        <field name="food_name_id" ref='gym.food_product_22'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_7149" model="food.item">
+        <field name="food_id" ref='diet_item_line_8862'/>
+        <field name="food_name_id" ref='gym.food_product_4'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_7150" model="food.item">
+        <field name="food_id" ref='diet_item_line_8862'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+
+    <!--diet paln Weight Gain (3000 Calories Plan)-->
+    <record id="diet_item_line_111" model="diet.plan.lines">
+        <field name="interval">early_morning</field>
+        <field name="diet_list_id" ref='diet_plan_line_111'/>
+    </record>
+    <record id="diet_item_line_112" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_111'/>
+    </record>
+    <record id="diet_item_line_113" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_111'/>
+    </record>
+    <record id="diet_item_line_114" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_111'/>
+    </record>
+    <record id="diet_item_line_115" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_111'/>
+    </record>
+    <record id="diet_item_line_116" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_111'/>
+    </record>
+
+    <!--diet paln Weight Loss-->
+    <record id="diet_item_line_117" model="diet.plan.lines">
+        <field name="interval">early_morning</field>
+        <field name="diet_list_id" ref='diet_plan_line_115'/>
+    </record>
+    <record id="diet_item_line_118" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_115'/>
+    </record>
+    <record id="diet_item_line_119" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_115'/>
+    </record>
+    <record id="diet_item_line_120" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_115'/>
+    </record>
+    <record id="diet_item_line_121" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_115'/>
+    </record>
+    <record id="diet_item_line_122" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_115'/>
+    </record>
+
+    <!--High Protien diet paln (day-1)-->
+    <record id="diet_item_line_123" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_116'/>
+    </record>
+    <record id="diet_item_line_124" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_116'/>
+    </record>
+    <record id="diet_item_line_125" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_116'/>
+    </record>
+    <record id="diet_item_line_126" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_116'/>
+    </record>
+    <record id="diet_item_line_127" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_116'/>
+    </record>
+
+    <!--High Protien diet paln (day-2)-->
+    <record id="diet_item_line_128" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_117'/>
+    </record>
+    <record id="diet_item_line_129" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_117'/>
+    </record>
+    <record id="diet_item_line_130" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_117'/>
+    </record>
+    <record id="diet_item_line_131" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_117'/>
+    </record>
+    <record id="diet_item_line_132" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_117'/>
+    </record>
+
+    <!--High Protien diet paln (day-3)-->
+    <record id="diet_item_line_133" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_118'/>
+    </record>
+    <record id="diet_item_line_134" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_118'/>
+    </record>
+    <record id="diet_item_line_135" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_118'/>
+    </record>
+    <record id="diet_item_line_136" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_118'/>
+    </record>
+    <record id="diet_item_line_137" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_118'/>
+    </record>
+
+    <!--High Protien diet paln (day-4)-->
+    <record id="diet_item_line_138" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_119'/>
+    </record>
+    <record id="diet_item_line_139" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_119'/>
+    </record>
+    <record id="diet_item_line_140" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_119'/>
+    </record>
+    <record id="diet_item_line_141" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_119'/>
+    </record>
+    <record id="diet_item_line_142" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_119'/>
+    </record>
+
+    <!--High Protien diet paln (day-5)-->
+    <record id="diet_item_line_143" model="diet.plan.lines">
+        <field name="interval">breakfast</field>
+        <field name="diet_list_id" ref='diet_plan_line_120'/>
+    </record>
+    <record id="diet_item_line_144" model="diet.plan.lines">
+        <field name="interval">pre_lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_120'/>
+    </record>
+    <record id="diet_item_line_145" model="diet.plan.lines">
+        <field name="interval">lunch</field>
+        <field name="diet_list_id" ref='diet_plan_line_120'/>
+    </record>
+    <record id="diet_item_line_146" model="diet.plan.lines">
+        <field name="interval">snack</field>
+        <field name="diet_list_id" ref='diet_plan_line_120'/>
+    </record>
+    <record id="diet_item_line_147" model="diet.plan.lines">
+        <field name="interval">dinner</field>
+        <field name="diet_list_id" ref='diet_plan_line_120'/>
+    </record>
+
+    <!--Food For Weight Gain  -->
+    <record id="food_item_1117" model="food.item">
+        <field name="food_id" ref='diet_item_line_111'/>
+        <field name="food_name_id" ref='gym.food_product_1'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1127" model="food.item">
+        <field name="food_id" ref='diet_item_line_111'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1137" model="food.item">
+        <field name="food_id" ref='diet_item_line_111'/>
+        <field name="food_name_id" ref='gym.food_product_11'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1147" model="food.item">
+        <field name="food_id" ref='diet_item_line_112'/>
+        <field name="food_name_id" ref='gym.food_product_7'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1157" model="food.item">
+        <field name="food_id" ref='diet_item_line_112'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1167" model="food.item">
+        <field name="food_id" ref='diet_item_line_112'/>
+        <field name="food_name_id" ref='gym.food_product_12'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_1177" model="food.item">
+        <field name="food_id" ref='diet_item_line_113'/>
+        <field name="food_name_id" ref='gym.food_product_13'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_1187" model="food.item">
+        <field name="food_id" ref='diet_item_line_113'/>
+        <field name="food_name_id" ref='gym.food_product_14'/>
+        <field name="quantity">15</field>
+    </record>
+    <record id="food_item_1197" model="food.item">
+        <field name="food_id" ref='diet_item_line_113'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1207" model="food.item">
+        <field name="food_id" ref='diet_item_line_114'/>
+        <field name="food_name_id" ref='gym.food_product_4'/>
+        <field name="quantity">6</field>
+    </record>
+    <record id="food_item_1217" model="food.item">
+        <field name="food_id" ref='diet_item_line_114'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1227" model="food.item">
+        <field name="food_id" ref='diet_item_line_114'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1237" model="food.item">
+        <field name="food_id" ref='diet_item_line_114'/>
+        <field name="food_name_id" ref='gym.food_product_16'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1247" model="food.item">
+        <field name="food_id" ref='diet_item_line_114'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1257" model="food.item">
+        <field name="food_id" ref='diet_item_line_115'/>
+        <field name="food_name_id" ref='gym.food_product_17'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1267" model="food.item">
+        <field name="food_id" ref='diet_item_line_115'/>
+        <field name="food_name_id" ref='gym.food_product_18'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_1277" model="food.item">
+        <field name="food_id" ref='diet_item_line_116'/>
+        <field name="food_name_id" ref='gym.food_product_4'/>
+        <field name="quantity">3</field>
+    </record>
+    <record id="food_item_1287" model="food.item">
+        <field name="food_id" ref='diet_item_line_116'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1297" model="food.item">
+        <field name="food_id" ref='diet_item_line_116'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1307" model="food.item">
+        <field name="food_id" ref='diet_item_line_116'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">2</field>
+    </record>
+
+    <!--Food For Weight Loss  -->
+    <record id="food_item_131" model="food.item">
+        <field name="food_id" ref='diet_item_line_117'/>
+        <field name="food_name_id" ref='gym.food_product_19'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_132" model="food.item">
+        <field name="food_id" ref='diet_item_line_117'/>
+        <field name="food_name_id" ref='gym.food_product_17'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_133" model="food.item">
+        <field name="food_id" ref='diet_item_line_118'/>
+        <field name="food_name_id" ref='gym.food_product_18'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_134" model="food.item">
+        <field name="food_id" ref='diet_item_line_118'/>
+        <field name="food_name_id" ref='gym.food_product_1'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_135" model="food.item">
+        <field name="food_id" ref='diet_item_line_118'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_136" model="food.item">
+        <field name="food_id" ref='diet_item_line_118'/>
+        <field name="food_name_id" ref='gym.food_product_12'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_137" model="food.item">
+        <field name="food_id" ref='diet_item_line_119'/>
+        <field name="food_name_id" ref='gym.food_product_11'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_138" model="food.item">
+        <field name="food_id" ref='diet_item_line_119'/>
+        <field name="food_name_id" ref='gym.food_product_23'/>
+        <field name="quantity">15</field>
+    </record>
+    <record id="food_item_139" model="food.item">
+        <field name="food_id" ref='diet_item_line_120'/>
+        <field name="food_name_id" ref='gym.food_product_20'/>
+        <field name="quantity">10</field>
+    </record>
+    <record id="food_item_140" model="food.item">
+        <field name="food_id" ref='diet_item_line_120'/>
+        <field name="food_name_id" ref='gym.food_product_22'/>
+        <field name="quantity">3</field>
+    </record>
+    <record id="food_item_141" model="food.item">
+        <field name="food_id" ref='diet_item_line_120'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_142" model="food.item">
+        <field name="food_id" ref='diet_item_line_120'/>
+        <field name="food_name_id" ref='gym.food_product_21'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_143" model="food.item">
+        <field name="food_id" ref='diet_item_line_120'/>
+        <field name="food_name_id" ref='gym.food_product_3'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_144" model="food.item">
+        <field name="food_id" ref='diet_item_line_121'/>
+        <field name="food_name_id" ref='gym.food_product_8'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_145" model="food.item">
+        <field name="food_id" ref='diet_item_line_121'/>
+        <field name="food_name_id" ref='gym.food_product_21'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_146" model="food.item">
+        <field name="food_id" ref='diet_item_line_122'/>
+        <field name="food_name_id" ref='gym.food_product_4'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_147" model="food.item">
+        <field name="food_id" ref='diet_item_line_122'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_148" model="food.item">
+        <field name="food_id" ref='diet_item_line_122'/>
+        <field name="food_name_id" ref='gym.food_product_22'/>
+        <field name="quantity">2</field>
+    </record>
+
+    <!--Food For High Protien Diet (Day-1) -->
+    <record id="food_item_1491" model="food.item">
+        <field name="food_id" ref='diet_item_line_123'/>
+        <field name="food_name_id" ref='gym.food_product_1'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1501" model="food.item">
+        <field name="food_id" ref='diet_item_line_123'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1521" model="food.item">
+        <field name="food_id" ref='diet_item_line_124'/>
+        <field name="food_name_id" ref='gym.food_product_7'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1531" model="food.item">
+        <field name="food_id" ref='diet_item_line_124'/>
+        <field name="food_name_id" ref='gym.food_product_11'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1551" model="food.item">
+        <field name="food_id" ref='diet_item_line_125'/>
+        <field name="food_name_id" ref='gym.food_product_13'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_1561" model="food.item">
+        <field name="food_id" ref='diet_item_line_125'/>
+        <field name="food_name_id" ref='gym.food_product_14'/>
+        <field name="quantity">15</field>
+    </record>
+    <record id="food_item_1571" model="food.item">
+        <field name="food_id" ref='diet_item_line_125'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">10</field>
+    </record>
+    <record id="food_item_1611" model="food.item">
+        <field name="food_id" ref='diet_item_line_127'/>
+        <field name="food_name_id" ref='gym.food_product_16'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1621" model="food.item">
+        <field name="food_id" ref='diet_item_line_126'/>
+        <field name="food_name_id" ref='gym.food_product_3'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1641" model="food.item">
+        <field name="food_id" ref='diet_item_line_127'/>
+        <field name="food_name_id" ref='gym.food_product_18'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_1651" model="food.item">
+        <field name="food_id" ref='diet_item_line_127'/>
+        <field name="food_name_id" ref='gym.food_product_4'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1661" model="food.item">
+        <field name="food_id" ref='diet_item_line_127'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1671" model="food.item">
+        <field name="food_id" ref='diet_item_line_127'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1681" model="food.item">
+        <field name="food_id" ref='diet_item_line_127'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">2</field>
+    </record>
+
+    <!--Food For High Protien Diet (Day-2) -->
+    <record id="food_item_169" model="food.item">
+        <field name="food_id" ref='diet_item_line_128'/>
+        <field name="food_name_id" ref='gym.food_product_1'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_170" model="food.item">
+        <field name="food_id" ref='diet_item_line_128'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_171" model="food.item">
+        <field name="food_id" ref='diet_item_line_128'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_172" model="food.item">
+        <field name="food_id" ref='diet_item_line_129'/>
+        <field name="food_name_id" ref='gym.food_product_7'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_173" model="food.item">
+        <field name="food_id" ref='diet_item_line_129'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_174" model="food.item">
+        <field name="food_id" ref='diet_item_line_129'/>
+        <field name="food_name_id" ref='gym.food_product_12'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_175" model="food.item">
+        <field name="food_id" ref='diet_item_line_130'/>
+        <field name="food_name_id" ref='gym.food_product_13'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_176" model="food.item">
+        <field name="food_id" ref='diet_item_line_130'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">15</field>
+    </record>
+    <record id="food_item_177" model="food.item">
+        <field name="food_id" ref='diet_item_line_130'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">10</field>
+    </record>
+    <record id="food_item_182" model="food.item">
+        <field name="food_id" ref='diet_item_line_131'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_183" model="food.item">
+        <field name="food_id" ref='diet_item_line_132'/>
+        <field name="food_name_id" ref='gym.food_product_25'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_184" model="food.item">
+        <field name="food_id" ref='diet_item_line_132'/>
+        <field name="food_name_id" ref='gym.food_product_18'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_185" model="food.item">
+        <field name="food_id" ref='diet_item_line_132'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_186" model="food.item">
+        <field name="food_id" ref='diet_item_line_132'/>
+        <field name="food_name_id" ref='gym.food_product_28'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_187" model="food.item">
+        <field name="food_id" ref='diet_item_line_132'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_188" model="food.item">
+        <field name="food_id" ref='diet_item_line_132'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">4</field>
+    </record>
+
+    <!--Food For High Protien Diet (Day-3) -->
+    <record id="food_item_1891" model="food.item">
+        <field name="food_id" ref='diet_item_line_123'/>
+        <field name="food_name_id" ref='gym.food_product_1'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1901" model="food.item">
+        <field name="food_id" ref='diet_item_line_133'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1111" model="food.item">
+        <field name="food_id" ref='diet_item_line_133'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_1211" model="food.item">
+        <field name="food_id" ref='diet_item_line_134'/>
+        <field name="food_name_id" ref='gym.food_product_7'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1311" model="food.item">
+        <field name="food_id" ref='diet_item_line_134'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_1411" model="food.item">
+        <field name="food_id" ref='diet_item_line_134'/>
+        <field name="food_name_id" ref='gym.food_product_12'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_1511" model="food.item">
+        <field name="food_id" ref='diet_item_line_135'/>
+        <field name="food_name_id" ref='gym.food_product_13'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_1611" model="food.item">
+        <field name="food_id" ref='diet_item_line_135'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">15</field>
+    </record>
+    <record id="food_item_1711" model="food.item">
+        <field name="food_id" ref='diet_item_line_135'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">10</field>
+    </record>
+    <record id="food_item_1001" model="food.item">
+        <field name="food_id" ref='diet_item_line_136'/>
+        <field name="food_name_id" ref='gym.food_product_16'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1083" model="food.item">
+        <field name="food_id" ref='diet_item_line_137'/>
+        <field name="food_name_id" ref='gym.food_product_25'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1084" model="food.item">
+        <field name="food_id" ref='diet_item_line_137'/>
+        <field name="food_name_id" ref='gym.food_product_18'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_1085" model="food.item">
+        <field name="food_id" ref='diet_item_line_137'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1086" model="food.item">
+        <field name="food_id" ref='diet_item_line_137'/>
+        <field name="food_name_id" ref='gym.food_product_28'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_1087" model="food.item">
+        <field name="food_id" ref='diet_item_line_137'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_1088" model="food.item">
+        <field name="food_id" ref='diet_item_line_137'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">4</field>
+    </record>
+
+    <!--Food For High Protien Diet (Day-4) -->
+    <record id="food_item_189" model="food.item">
+        <field name="food_id" ref='diet_item_line_138'/>
+        <field name="food_name_id" ref='gym.food_product_1'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_190" model="food.item">
+        <field name="food_id" ref='diet_item_line_138'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_191" model="food.item">
+        <field name="food_id" ref='diet_item_line_138'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_192" model="food.item">
+        <field name="food_id" ref='diet_item_line_139'/>
+        <field name="food_name_id" ref='gym.food_product_7'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_193" model="food.item">
+        <field name="food_id" ref='diet_item_line_139'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_194" model="food.item">
+        <field name="food_id" ref='diet_item_line_139'/>
+        <field name="food_name_id" ref='gym.food_product_12'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_195" model="food.item">
+        <field name="food_id" ref='diet_item_line_140'/>
+        <field name="food_name_id" ref='gym.food_product_13'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_196" model="food.item">
+        <field name="food_id" ref='diet_item_line_140'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">15</field>
+    </record>
+    <record id="food_item_197" model="food.item">
+        <field name="food_id" ref='diet_item_line_140'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">10</field>
+    </record>
+    <record id="food_item_199" model="food.item">
+        <field name="food_id" ref='diet_item_line_141'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_100" model="food.item">
+        <field name="food_id" ref='diet_item_line_142'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_101" model="food.item">
+        <field name="food_id" ref='diet_item_line_142'/>
+        <field name="food_name_id" ref='gym.food_product_16'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_102" model="food.item">
+        <field name="food_id" ref='diet_item_line_142'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_103" model="food.item">
+        <field name="food_id" ref='diet_item_line_142'/>
+        <field name="food_name_id" ref='gym.food_product_25'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_104" model="food.item">
+        <field name="food_id" ref='diet_item_line_142'/>
+        <field name="food_name_id" ref='gym.food_product_18'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_106" model="food.item">
+        <field name="food_id" ref='diet_item_line_142'/>
+        <field name="food_name_id" ref='gym.food_product_28'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_108" model="food.item">
+        <field name="food_id" ref='diet_item_line_142'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">4</field>
+    </record>
+
+    <!--Food For High Protien Diet (Day-5) -->
+    <record id="food_item_109" model="food.item">
+        <field name="food_id" ref='diet_item_line_143'/>
+        <field name="food_name_id" ref='gym.food_product_1'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_110" model="food.item">
+        <field name="food_id" ref='diet_item_line_143'/>
+        <field name="food_name_id" ref='gym.food_product_2'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_111" model="food.item">
+        <field name="food_id" ref='diet_item_line_143'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_112" model="food.item">
+        <field name="food_id" ref='diet_item_line_144'/>
+        <field name="food_name_id" ref='gym.food_product_7'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_113" model="food.item">
+        <field name="food_id" ref='diet_item_line_144'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">2</field>
+    </record>
+    <record id="food_item_114" model="food.item">
+        <field name="food_id" ref='diet_item_line_144'/>
+        <field name="food_name_id" ref='gym.food_product_12'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_115" model="food.item">
+        <field name="food_id" ref='diet_item_line_145'/>
+        <field name="food_name_id" ref='gym.food_product_13'/>
+        <field name="quantity">5</field>
+    </record>
+    <record id="food_item_116" model="food.item">
+        <field name="food_id" ref='diet_item_line_145'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">15</field>
+    </record>
+    <record id="food_item_117" model="food.item">
+        <field name="food_id" ref='diet_item_line_145'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">10</field>
+    </record>
+    <record id="food_item_118" model="food.item">
+        <field name="food_id" ref='diet_item_line_145'/>
+        <field name="food_name_id" ref='gym.food_product_27'/>
+        <field name="quantity">3</field>
+    </record>
+    <record id="food_item_119" model="food.item">
+        <field name="food_id" ref='diet_item_line_145'/>
+        <field name="food_name_id" ref='gym.food_product_5'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_120" model="food.item">
+        <field name="food_id" ref='diet_item_line_146'/>
+        <field name="food_name_id" ref='gym.food_product_9'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_121" model="food.item">
+        <field name="food_id" ref='diet_item_line_146'/>
+        <field name="food_name_id" ref='gym.food_product_16'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_123" model="food.item">
+        <field name="food_id" ref='diet_item_line_147'/>
+        <field name="food_name_id" ref='gym.food_product_25'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_124" model="food.item">
+        <field name="food_id" ref='diet_item_line_147'/>
+        <field name="food_name_id" ref='gym.food_product_18'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_125" model="food.item">
+        <field name="food_id" ref='diet_item_line_147'/>
+        <field name="food_name_id" ref='gym.food_product_26'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_126" model="food.item">
+        <field name="food_id" ref='diet_item_line_147'/>
+        <field name="food_name_id" ref='gym.food_product_28'/>
+        <field name="quantity">4</field>
+    </record>
+    <record id="food_item_127" model="food.item">
+        <field name="food_id" ref='diet_item_line_147'/>
+        <field name="food_name_id" ref='gym.food_product_10'/>
+        <field name="quantity">1</field>
+    </record>
+    <record id="food_item_128" model="food.item">
+        <field name="food_id" ref='diet_item_line_147'/>
+        <field name="food_name_id" ref='gym.food_product_15'/>
+        <field name="quantity">4</field>
+    </record>
+
+</odoo>

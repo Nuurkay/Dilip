@@ -1,0 +1,16 @@
+<odoo>
+    <record id="action_employee_report" model="ir.actions.report">
+        <field name="name">gym_employee_attendance.employee_attendance_report</field>
+        <field name="model">employee.attendance</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >gym_employee_attendance.employee_attendance_report</field>
+        <field
+            name="report_file"
+        >gym_employee_attendance.employee_attendance_report</field>
+        <field name="print_report_name">Employee Attendance Report</field>
+        <field name="binding_model_id" ref="" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

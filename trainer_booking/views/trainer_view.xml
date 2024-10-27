@@ -1,0 +1,31 @@
+<odoo>
+
+    <record id="action_workout_with_trainee" model="ir.actions.act_window">
+        <field name="name">Workout With Trainee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">calendar.event</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('trainer_id', '=', active_id)]</field>
+        <field name="context">{'create': False, 'edit': False}</field>
+    </record>
+
+    <!-- Inherited view of hr employee -->
+    <record id="view_trainee_form_inherit" model="ir.ui.view">
+        <field name="name">view.trainee.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="%(action_workout_with_trainee)d"
+                        class="oe_stat_button"
+                        icon="fa-users"
+                        type="action">
+                    <field name="workout_with_trainee" widget="statinfo"
+                           string="Workout With Trainee"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

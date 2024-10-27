@@ -1,0 +1,22 @@
+<odoo noupdate="1">
+
+    <record id="service_gym_1" model="product.template">
+        <field name="name">Gym</field>
+    </record>
+    <record id="service_Cardio_2" model="product.template">
+        <field name="name">Cardio</field>
+    </record>
+    <record id="service_yoga_3" model="product.template">
+        <field name="name">Yoga</field>
+    </record>
+    <record id="service_spa_4" model="product.template">
+        <field name="name">Spa</field>
+    </record>
+    <record id="service_personal_training_5" model="product.template">
+        <field name="name">Personal training</field>
+    </record>
+    <record id="service_nutrition_6" model="product.template">
+        <field name="name">Nutrition</field>
+    </record>
+
+</odoo>

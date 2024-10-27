@@ -1,0 +1,442 @@
+<odoo>
+    <!-- Inherited view of res_partner -->
+    <record id="view_member_form_inherit" model="ir.ui.view">
+        <field name="name">view.member.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/div/field[@name='company_type']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group/field[@name='function']" position="replace">
+                <field name="occupation"/>
+            </xpath>
+            <xpath expr="//div/field[@name='parent_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <field name="email" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+            <xpath expr="//page[@name='sales_purchases']/group/group[@name='sale']/field[@name='user_id']" position="after">
+                <field name="is_member" invisible="1"/>
+            </xpath>
+            <xpath expr="//group/field[@name='category_id']" position="after">
+                <field name="age"/>
+            </xpath>
+            <xpath expr="//group/field[@name='category_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group/field[@name='age']" position="before">
+                <field name="gender" widget="radio"/>
+                <field name="birthdate" required="1"/>
+                <field name="user_id" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='lang']" position="after">
+                <field name="measurements" invisible="1" />
+                <field name="membership" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='image_1920']" position="after">
+                <h1>
+                    <field name="reg_no" attrs="{'invisible':[('is_member','=',False)]}"  readonly="1"/>
+                </h1>
+            </xpath>
+            <xpath expr="/form/sheet" position="before">
+                <header>
+                    <button name="action_view_user" attrs="{'invisible':[('user_id','=',False)]}" groups="gym.group_gym_operator" string="Open User" type="object"/>
+                </header>
+            </xpath>
+            <xpath expr="//notebook/page[@name='sales_purchases']" position="before">
+                <page string="Measurement History">
+                    <group cols="2" colspan="2">
+                        <field name="member_measurement_ids" context="{'member_invisible':1}" nolabel="1">
+                            <form>
+                                <sheet>
+                                    <separator col="4" string="Member's Detail"/>
+                                    <group>
+                                        <field name="date"/>
+                                    </group>
+                                    <separator col="4" string="Height - Weight"/>
+                                    <group>
+                                        <label for="weight" string="Weight"/>
+                                        <div>
+                                            <field name="weight" class="oe_inline"/>⁣
+                                            &#x2063;
+                                            <field name="umo_weight_id" 
+                                                class="oe_inline" nolabel="1" placeholder="e.g. kg"/></div>
+                                        <label for="height" string="Height"/>
+                                        <div>
+                                            <field name="height" class="oe_inline"/>⁣
+                                            &#x2063;
+                                            <field name="umo_height_id" 
+                                                class="oe_inline" nolabel="1" placeholder="e.g. foot"/></div>
+                                        <field name="bmi"/>
+                                        <field name="bmr"/>
+                                    </group>
+                                    <separator col="4" string="Body Measurement"/>
+                                    <group col="2">
+                                        <label for="neck" string="Neck"/>
+                                        <div>
+                                            <field name="neck" class="oe_inline"/>⁣
+                                            &#x2063;
+                                            <field name="umo_neck_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                                        <label for="chest"/>
+                                        <div>
+                                            <field name="chest" class="oe_inline"/>⁣
+                                            &#x2063;
+                                            <field name="umo_chest_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                                        <label for="biceps"/>
+                                        <div>
+                                            <field name="biceps" class="oe_inline"/>⁣
+                                            &#x2063;
+                                            <field name="umo_biceps_id" 
+                                                class="oe_inline"  nolabel="1" placeholder="e.g. inches"/></div>
+                                        <label for="waist"/>
+                                        <div>
+                                            <field name="waist" class="oe_inline"/>⁣
+                                            &#x2063;
+                                            <field name="umo_waist_id" class="oe_inline"  nolabel="1" placeholder="e.g. inches"/></div>
+                                        <label for="hips"/>
+                                        <div>
+                                            <field name="hips" class="oe_inline" />⁣
+                                            &#x2063;
+                                            <field class="oe_inline" name="umo_hips_id" nolabel="1" placeholder="e.g. inches"/></div>
+                                        <label for="thigh"/>
+                                        <div>
+                                            <field name="thigh" class="oe_inline"/>⁣
+                                            &#x2063;
+                                            <field name="umo_thigh_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                                        <label for="calf"/>
+                                        <div>
+                                            <field name="calf" class="oe_inline"/>⁣
+                                            &#x2063;
+                                            <field name="umo_calf_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//button[@name='%(membership.action_membership_invoice_view)d']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_task_partner_info_form_inherit" model="ir.ui.view">
+        <field name="name">view.task.partner.info.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="project.view_task_partner_info_form"/>
+        <field name="arch" type="xml">
+            <field name="task_count" position="attributes">
+                <attribute name="string">Workouts</attribute>
+            </field>
+        </field>
+    </record>
+    <!-- Action of Measurement History -->
+    <record id="action_measurement_history" model="ir.actions.act_window">
+        <field name="name">Measurement History</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">body.measurement</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- Action of Member Measurement History -->
+    <record id="action_member_measurement_history" model="ir.actions.act_window">
+        <field name="name">Member Measurement History</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">body.measurement</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+    </record>
+    <!--Kanban view of member -->
+    <record id="member_kanban_view_new" model="ir.ui.view">
+        <field name="name">member.kanban.view.new</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban">
+                <field name="id"/>
+                <field name="color"/>
+                <field name="display_name"/>
+                <field name="title"/>
+                <field name="email"/>
+                <field name="parent_id"/>
+                <field name="is_company"/>
+                <field name="function"/>
+                <field name="phone"/>
+                <field name="street"/>
+                <field name="street2"/>
+                <field name="zip"/>
+                <field name="city"/>
+                <field name="country_id"/>
+                <field name="mobile"/>
+                <field name="state_id"/>
+                <field name="category_id"/>
+                <field name="image_128"/>
+                <field name="type"/>
+                <field name="measurements"/>
+                <field name="membership"/>
+                <field name="task_count"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_res_partner_kanban">
+                            <div class="container" style="padding: 0px;">
+                                <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                <div class="o_kanban_image">
+                                    <t t-if="record.image_128.raw_value">
+                                        <img style="width:80px; height:80px;" t-att-src="kanban_image('res.partner', 'image_128', record.id.value)"
+                                            t-att-alt="record.image_128.value"/>
+                                    </t>
+                                    <t t-else="">
+                                        <img style="width:80px; height:80px;" t-att-src="kanban_image('/base/static/img/avatar_grey.png')" alt="Avatar"/>
+                                    </t>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong class="oe_partner_heading">
+                                        <field name="display_name"/>
+                                    </strong>
+                                    <ul>
+                                        <li t-if="record.parent_id.raw_value and !record.function.raw_value">
+                                            <field name="parent_id"/>
+                                        </li>
+                                        <li t-if="!record.parent_id.raw_value and record.function.raw_value">
+                                            <field name="function"/>
+                                        </li>
+                                        <li t-if="record.parent_id.raw_value and record.function.raw_value">
+                                            <field name="function"/>at
+                                            
+                                            <field name="parent_id"/></li>
+                                        <li t-if="record.city.raw_value and !record.country_id.raw_value">
+                                            <field name="city"/>
+                                        </li>
+                                        <li t-if="!record.city.raw_value and record.country_id.raw_value">
+                                            <field name="country_id"/>
+                                        </li>
+                                        <li t-if="record.city.raw_value and record.country_id.raw_value">
+                                            <field name="city"/>,
+                                            
+                                            <field name="country_id"/></li>
+                                        <li class="o_text_overflow" t-if="record.email.raw_value">
+                                            <field name="email"/>
+                                        </li>
+                                    </ul>
+                                    <div class="oe_kanban_partner_links"/>
+                                </div>
+                                <div class="row container" style="padding-top: 5px;">
+                                    <div class="col-12 text-center">
+                                        <div class="col-lg-4 col-sm-6 col-12" id="measurement" style="float: left; padding-right: 6px;">
+                                            <a name="%(gym.action_member_measurement_history)d" context="{'default_partner_id': active_id}" id="measurement_div" type="action">
+                                                <h2>
+                                                    <span t-esc="record.measurements.value"/>
+                                                </h2>
+                                                <b>
+                                                    <span style="font-size:13px; word-wrap: break-word;">Measure-ments
+                                                    </span>
+                                                </b>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-6 col-12" id="membership" style="float: left; padding-right: 6px;">
+                                            <a name="%(gym.action_member_membership_plan)d" context="{'default_partner': active_id}" type="action">
+                                                <h2>
+                                                    <span t-esc="record.membership.value"/>
+                                                </h2>
+                                                <b>
+                                                    <span style="font-size:13px; word-wrap: break-word;">Member-ships
+                                                    </span>
+                                                </b>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-6 col-12" id="task_count" style="float: left; padding-right: 6px;">
+                                            <a name="%(gym.action_view_member_task)d" context="{'default_partner_id': active_id}" type="action">
+                                                <h2>
+                                                    <span t-esc="record.task_count.value"/>
+                                                </h2>
+                                                <b>
+                                                    <span style="font-size:13px; word-wrap: break-word;">Workout
+                                                    </span>
+                                                </b>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <!--Action for members menu -->
+    <record id="action_member" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_member','=',True)]</field>
+        <field name="context">{'member_default':True}</field>
+    </record>
+    <!-- Binding the action of customer -->
+    <record id="view_member_kanban" model="ir.actions.act_window.view">
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="member_kanban_view_new"/>
+        <field name="act_window_id" ref="action_member"/>
+    </record>
+    <!-- parent menu  -->
+    <menuitem id="menu_gym" name="Gym Management"/>
+    <!--  Sub Menu as members  -->
+    <menuitem action="action_member" id="menu_member" parent="gym.menu_gym" sequence="1"/>
+    <!-- Form view of Measurement History -->
+    <record id="view_measurement_history_form" model="ir.ui.view">
+        <field name="name">view.measurement.history.form</field>
+        <field name="model">body.measurement</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <separator col="4" string="Member's Detail"/>
+                    <group>
+                        <field name="partner_id" context="{'default_is_member':True}" domain="[('is_member','=',True)]" invisible="context.get('member_invisible', False)" required="1"/>
+                        <field name="date"/>
+                    </group>
+                    <separator col="4" string="Height - Weight"/>
+                    <group>
+                        <label for="weight" string="Weight"/>
+                        <div>
+                            <field name="weight" class="oe_inline"/>⁣
+                            &#x2063;
+                            <field name="umo_weight_id" class="oe_inline" nolabel="1" placeholder="e.g. kg"/></div>
+                        <label for="height" string="Height"/>
+                        <div>
+                            <field name="height" class="oe_inline"/>⁣
+                            &#x2063;
+                            <field name="umo_height_id" class="oe_inline" nolabel="1" placeholder="e.g. foot"/></div>
+                        <field name="bmi" readonly="1"/>
+                        <field name="bmr"/>
+                    </group>
+                    <separator col="4" string="Body Measurement"/>
+                    <group col="4">
+                        <label for="neck" string="Neck"/>
+                        <div>
+                            <field name="neck" class="oe_inline"/>⁣
+                            &#x2063;
+                            <field name="umo_neck_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                        <label for="chest"/>
+                        <div>
+                            <field name="chest" class="oe_inline"/>⁣
+                            &#x2063;
+                            <field name="umo_chest_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                        <label for="biceps"/>
+                        <div>
+                            <field  name="biceps" class="oe_inline"/>⁣
+                            &#x2063;
+                            <field name="umo_biceps_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                        <label for="waist"/>
+                        <div>
+                            <field name="waist" class="oe_inline"/>⁣
+                            &#x2063;
+                            <field name="umo_waist_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                        <label for="hips"/>
+                        <div>
+                            <field name="hips" class="oe_inline"/>⁣
+                            &#x2063;
+                            <field name="umo_hips_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                        <label for="thigh"/>
+                        <div>
+                            <field name="thigh" class="oe_inline"/>⁣
+                            &#x2063;
+                            <field name="umo_thigh_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                        <label for="calf"/>
+                        <div>
+                            <field name="calf" class="oe_inline"/>⁣
+                            &#x2063;
+                            <field name="umo_calf_id" class="oe_inline" nolabel="1" placeholder="e.g. inches"/></div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Tree view of Measurement History -->
+    <record id="view_measurement_history_tree" model="ir.ui.view">
+        <field name="name">view.measurement.history.tree</field>
+        <field name="model">body.measurement</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="height"/>
+                <field name="chest"/>
+                <field name="neck"/>
+                <field name="biceps"/>
+                <field name="waist"/>
+                <field name="thigh"/>
+                <field name="hips"/>
+                <field name="calf"/>
+                <field name="weight"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Search view of Measurement History -->
+    <record id="view_measurement_search" model="ir.ui.view">
+        <field name="name">view.measurement.search</field>
+        <field name="model">body.measurement</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <filter context="{'group_by':'partner_id'}" domain="[]" name="group_by_member" string="Member"/>
+                <filter context="{'group_by':'date:day'}" domain="[]" name="group_by_date_day" string="Day"/>
+                <filter context="{'group_by':'date:month'}" domain="[]" name="group_by_date_month" string="Month"/>
+                <filter context="{'group_by':'date:year'}" domain="[]" name="group_by_date_year" string="Year"/>
+            </search>
+        </field>
+    </record>
+    <!--Pivot view of Measurement History  -->
+    <record id="measurement_view_pivot" model="ir.ui.view">
+        <field name="name">measurement.pivot</field>
+        <field name="model">body.measurement</field>
+        <field name="arch" type="xml">
+            <pivot string="Measurement">
+                <field name="partner_id" type="row"/>
+                <field name="date" type="col measure"/>
+                <field name="neck" type="measure"/>
+                <field name="chest" type="measure"/>
+                <field name="biceps" type="measure"/>
+                <field name="waist" type="measure"/>
+                <field name="hips" type="measure"/>
+                <field name="thigh" type="measure"/>
+                <field name="calf" type="measure"/>
+                <field name="weight" type="measure"/>
+                <field name="height" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+    <!--Graph view of Measurement History  -->
+    <record id="measurement_view_graph" model="ir.ui.view">
+        <field name="name">measurement.graph</field>
+        <field name="model">body.measurement</field>
+        <field name="arch" type="xml">
+            <graph string="Measurement">
+                <field name="partner_id"/>
+                <field name="date"/>
+                <field name="weight" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    <!--Action for Measurement Analysis  -->
+    <record id="measurement_graph_action" model="ir.actions.act_window">
+        <field name="name">Measurement Analysis</field>
+        <field name="res_model">body.measurement</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="context">{'search_default_group_by_member': 1,
+            'search_default_group_by_date_day': 1}
+        </field>
+    </record>
+    <!--Main Menu of Measurement history  -->
+    <menuitem id="menu_measurement_history" name="Measurement" parent="gym.menu_gym" sequence="1"/>
+    <!--Measurement history menu-->
+    <menuitem action="action_measurement_history" id="menu_measurement" parent="gym.menu_measurement_history" sequence="1"/>
+    <!--Main Menu of Report  -->
+    <menuitem id="menu_report" name="Report" parent="gym.menu_gym"/>
+    <!-- Measurement history analysis report -->
+    <menuitem action="measurement_graph_action" id="menu_measurement_report" parent="gym.menu_report" sequence="2"/>
+
+</odoo>

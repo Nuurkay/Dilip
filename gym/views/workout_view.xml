@@ -1,0 +1,171 @@
+<odoo>
+
+    <!-- Form view of exercise.lines -->
+    <record id="view_exercise_workout_lines_form" model="ir.ui.view">
+        <field name="name">view.exercise.workout.lines.form</field>
+        <field name="model">exercise.lines</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="exercise_name_id" required="1"/>
+                        <field name="sets"/>
+                        <field name="reps_ids" widget="many2many_tags"/>
+                        <field name="sequence" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of exercise.lines-->
+    <record id="view_exercise_workout_lines_tree" model="ir.ui.view">
+        <field name="name">view.exercise.workout.lines.tree</field>
+        <field name="model">exercise.lines</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="exercise_name_id" required="1"/>
+                <field name="sets"/>
+                <field name="reps_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of repeat.repeat -->
+    <record id="view_exercise_repeat_repeat_form" model="ir.ui.view">
+        <field name="name">view.exercise.repeat.repeat.form</field>
+        <field name="model">repeat.repeat</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="2">
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Form view of exercise.exercise -->
+    <record id="view_exercisess_form" model="ir.ui.view">
+        <field name="name">view.exercisess.form</field>
+        <field name="model">exercise.exercise</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="exercise_type_ids"
+                               widget="many2many_tags"/>
+                        <field name="equipment_id"
+                               domain="[('is_equipment','=',True), ('state', '=', 'working')]"
+                               context="{'form_view_ref':'gym.view_equipments_form_view','default_is_equipment':True}"/>
+                    </group>
+                    <notebook>
+                        <page string="Benefits">
+                            <separator string="Benefits"/>
+                            <field name="benefits"
+                                   placeholder="Benefits of Exercise"/>
+                        </page>
+                        <page string="Steps">
+                            <separator string="Steps To Follow"/>
+                            <field name="steps" placeholder="Steps To Follow"/>
+                        </page>
+                        <page string="Images">
+                            <field name="exercise_images_ids" mode="kanban">
+                                <kanban>
+                                    <field name="datas" widget='image'/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class='oe_kanban_global_click'>
+                                                <a title="Delete" t-if="!read_only_mode"
+                                                   type="delete"
+                                                   class="fa fa-times pull-right"/>
+                                                <div class="oe_kanban_avatar">
+                                                    <img alt="Images"
+                                                         t-if="record.datas.raw_value"
+                                                         width="320" height="128"
+                                                         t-att-src="'data:datas/png;base64,'+record.datas.raw_value"/>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                                <form>
+                                    <group col="2">
+                                        <field name="name" />
+                                        <field name="datas"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Videos">
+                            <separator string="Videos"/>
+                            <field name="exercise_video_ids">
+                                <form>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="link"/>
+                                    </group>
+                                </form>
+                                <tree editable='bottom'>
+                                    <field name="name"/>
+                                    <field name="link"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of exercise.exercise-->
+    <record id="view_exercisess_tree" model="ir.ui.view">
+        <field name="name">view.exercisess.tree</field>
+        <field name="model">exercise.exercise</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="exercise_type_ids"/>
+                <field name="equipment_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view of exercise.exercise-->
+    <record id="view_exercisess_search" model="ir.ui.view">
+        <field name="name">view.exercisess.search</field>
+        <field name="model">exercise.exercise</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="exercise_type_ids"/>
+                <filter name="fill_equipment" string="Equipment" domain="[]"
+                        context="{'group_by':'equipment_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action of exercise.lines-->
+    <record id="action_exercise_exercise" model="ir.actions.act_window">
+        <field name="name">Exercises</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">exercise.exercise</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click here to add new exercise.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu of the Exercises -->
+    <menuitem id="menu_exercise_exercise" action="action_exercise_exercise"
+              parent="gym.menu_Configuration" sequence="3"/>
+
+</odoo>

@@ -1,0 +1,50 @@
+<odoo>
+
+    <!-- Inherited view of hr employee -->
+    <record id="view_trainer_form_inherit" model="ir.ui.view">
+        <field name="name">view.trainer.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='address_id']"
+                   position="after">
+                <field name="is_trainer" invisible="1"/>
+            </xpath>
+            <xpath expr="//group/field[@name='work_phone']" position="after">
+                <field name="specialist_ids" widget="many2many_tags"
+                       required="1"/>
+            </xpath>
+            <field name='work_email' position='attributes'>
+                <attribute name='attrs'>
+                    {'required':[('is_trainer','=',True)]}
+                </attribute>
+            </field>
+            <field name='gender' position='attributes'>
+                <attribute name='required'>True</attribute>
+            </field>
+            <field name='name' position='attributes'>
+                <attribute name='placeholder'>Trainer's Name</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!--Action for trainer menu -->
+    <record id="action_trainer" model="ir.actions.act_window">
+        <field name="name">Trainers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_trainer','=',True)]</field>
+        <field name="context">{"default_is_trainer":True}</field>
+    </record>
+
+    <!-- parent menu  -->
+    <menuitem id="menu_gym" name="Gym Management"/>
+
+    <!--  Sub Menu as trainer  -->
+    <menuitem id="menu_trainer" action="action_trainer"
+              parent="gym.menu_gym" sequence="2"
+              groups='gym.group_gym_operator,gym.group_gym_trainer'/>
+
+</odoo>

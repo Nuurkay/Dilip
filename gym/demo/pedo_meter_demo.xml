@@ -1,0 +1,73 @@
+<odoo noupdate="1">
+
+    <record id="pedo_rec_1" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo2"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=1)).strftime('%Y-%m-%d')"/>
+        <field name="steps">800</field>
+    </record>
+
+    <record id="pedo_rec_2" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo2"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=2)).strftime('%Y-%m-%d')"/>
+        <field name="steps">900</field>
+    </record>
+
+    <record id="pedo_rec_3" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo2"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=3)).strftime('%Y-%m-%d')"/>
+        <field name="steps">1000</field>
+    </record>
+
+    <record id="pedo_rec_4" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo2"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=4)).strftime('%Y-%m-%d')"/>
+        <field name="steps">1200</field>
+    </record>
+
+    <record id="pedo_rec_5" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo2"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=5)).strftime('%Y-%m-%d')"/>
+        <field name="steps">1500</field>
+    </record>
+
+    <record id="pedo_rec_6" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo3"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=1)).strftime('%Y-%m-%d')"/>
+        <field name="steps">200</field>
+    </record>
+
+    <record id="pedo_rec_7" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo3"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=2)).strftime('%Y-%m-%d')"/>
+        <field name="steps">400</field>
+    </record>
+
+    <record id="pedo_rec_8" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo3"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=3)).strftime('%Y-%m-%d')"/>
+        <field name="steps">900</field>
+    </record>
+
+    <record id="pedo_rec_9" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo3"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=4)).strftime('%Y-%m-%d')"/>
+        <field name="steps">1200</field>
+    </record>
+
+    <record id="pedo_rec_10" model="pedo.meter">
+        <field name="partner_id" ref="gym.member_demo3"/>
+        <field name="date"
+               eval="(DateTime.now() - relativedelta(months=1,day=5)).strftime('%Y-%m-%d')"/>
+        <field name="steps">1500</field>
+    </record>
+
+</odoo>
